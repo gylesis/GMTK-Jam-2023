@@ -1,14 +1,40 @@
-﻿using DG.Tweening;
+﻿using System;
+using DG.Tweening;
 using UnityEngine;
 
 namespace Dev.Scripts
 {
     public abstract class InteractionObject : MonoBehaviour
     {
+        [SerializeField] private Renderer _renderer;
+        private Color _originColor;
+
         public virtual void OnClick() { }
         public virtual void OnSwipe(Vector3 direction) { }
-    }
 
+        public virtual void OnDown(){ }
+        
+        private void Awake()
+        {
+            _renderer = GetComponent<Renderer>();
+            _originColor = _renderer.material.color;
+        }
+
+        public void SetColor(Color color)
+        {
+            _renderer.material.color = color;
+        }
+
+        public void SetOriginColor()
+        {
+            SetColor(_originColor);
+        }
+        
+        /*public void SetMaterial(Material material)
+        {
+            _renderer.material = material;
+        }*/
+    }
 
     public interface ICommand<T> where T : InteractionObject
     {

@@ -1,4 +1,10 @@
-﻿namespace Dev.Scripts
+﻿using DG.Tweening;
+using UnityEngine;
+
+namespace Dev.Scripts
 {
-    public class Platform : InteractionObject { }
+    public class Platform : InteractionObject
+    {
+       
+    }
 }
