@@ -12,4 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abf3496418c746e29fa176897b52bfe5, type: 3}
   m_Name: GameSettings
   m_EditorClassIdentifier: 
+  DelayBeforeStartLevel: 0.5
   MoveUnitLenght: 4
+  CameraDefaultFollowSpeed: 3
+  CameraOffset:
+    XOffset: 6
+    YOffset: 7
+    ZOffset: -14

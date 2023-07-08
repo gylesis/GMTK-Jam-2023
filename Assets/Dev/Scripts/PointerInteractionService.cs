@@ -1,6 +1,6 @@
 ﻿using Dev.Scripts.Infrastructure;
 using UnityEngine;
-using VContainer;
+using Zenject;
 
 namespace Dev.Scripts
 {
