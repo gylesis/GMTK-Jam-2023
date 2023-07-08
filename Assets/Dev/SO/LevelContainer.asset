@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _levelStaticDatas:
   - _name: 1
-    LevelPrefab: {fileID: 2967399197894141906, guid: f5c4b0b869ab73e4a99bde4a37e0f373, type: 3}
+    LevelPrefab: {fileID: 2916436231429740665, guid: a490236d9b7db634b912fe7dec873b19, type: 3}
     Description: HUHUHUHUHUHUHUHUHU
   - _name: 2
-    LevelPrefab: {fileID: 2282121289698589221, guid: 207468a7d2978c346ae740b4314f2f94, type: 3}
+    LevelPrefab: {fileID: 2967399197894141906, guid: f5c4b0b869ab73e4a99bde4a37e0f373, type: 3}
     Description: HUHUHUHUHUHUHUHUHU
