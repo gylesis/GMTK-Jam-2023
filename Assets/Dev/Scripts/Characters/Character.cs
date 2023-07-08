@@ -43,6 +43,11 @@ namespace Dev.Scripts.Characters
             SetSpeed();
         }
 
+        public void ActivateMovement(bool active)
+        {
+            _allowToMove = active;
+        }
+        
         private void SetSpeed()
         {
             if (!_allowToMove) _rigidbody.velocity = Vector3.zero;

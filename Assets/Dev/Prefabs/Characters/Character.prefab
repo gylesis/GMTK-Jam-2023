@@ -156,11 +156,11 @@ MonoBehaviour:
   _upperAngleToCheckSpikes: 45
   _lowerAngleToCheckSpikes: -10
   _debugSpikeRays: 0
-  _minimumPlatformDistance: 5
-  _maximumPlatformDistance: 7
+  _minimumPlatformDistance: 3
+  _maximumPlatformDistance: 5
   _upperAngleToCheckPlatforms: 90
   _lowerAngleToCheckPlatforms: -30
-  _debugPlatformRays: 0
+  _debugPlatformRays: 1
   _character: {fileID: 4543442084119466439}
 --- !u!96 &3903301286684862402
 TrailRenderer:
