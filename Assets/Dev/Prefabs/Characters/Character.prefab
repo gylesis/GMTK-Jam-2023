@@ -150,8 +150,6 @@ MonoBehaviour:
     m_Bits: 55
   _checkGroundPoint: {fileID: 5491534286065208671}
   _rigidbody: {fileID: 5991593073201279490}
-  _grounded: 0
-  _ableToCheck: 1
 --- !u!114 &4610201890536483011
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166,6 +164,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _cliffDetectPoint: {fileID: 3903301285497944092}
   _cliffDetectDistance: 5
+  _spikeDistance: 2
+  _upperAngleToCheckSpikes: 45
+  _lowerAngleToCheckSpikes: 10
   _character: {fileID: 4543442084119466439}
 --- !u!96 &3903301286684862402
 TrailRenderer:

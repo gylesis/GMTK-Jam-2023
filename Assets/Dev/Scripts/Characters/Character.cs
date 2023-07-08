@@ -14,11 +14,13 @@ namespace Dev.Scripts.Characters
         
         [SerializeField] private Rigidbody _rigidbody;
 
-        [SerializeField] private bool _grounded;
-        [SerializeField] private bool _ableToCheck = true;
+        private bool _grounded;
+        private bool _ableToCheck = true;
 
         public LayerMask IgnoreMask => _ignoreMask;
-
+        public bool Grounded => _grounded;
+        public Action OnLanded;
+        
         private void Awake()
         {
             Initialize();
@@ -28,13 +30,22 @@ namespace Dev.Scripts.Characters
         {
             ApplyGravity();
             CheckGround();
+            SetSpeed();
         }
 
         private void Initialize()
         {
-            _rigidbody.velocity = _rigidbody.transform.right * _speed;
+            SetSpeed();
         }
 
+        private void SetSpeed()
+        {
+            if (_rigidbody.velocity.magnitude < (_rigidbody.transform.right * _speed).magnitude)
+            {
+                _rigidbody.velocity = _rigidbody.transform.right * _speed;
+            }
+        }
+        
         private void ApplyGravity()
         {
             _rigidbody.AddForce(Vector3.down * _gravityForceStrength);
@@ -56,10 +67,17 @@ namespace Dev.Scripts.Characters
 
         private void CheckGround()
         {
-            if (!_ableToCheck) return;
+            if (!_ableToCheck || _grounded) return;
             _grounded = Physics.Raycast(_checkGroundPoint.position, Vector3.down, out RaycastHit hit, 0.1f, _ignoreMask);
             
+            OnLanded.Invoke();
+            
             if(hit.transform) Debug.Log(hit.transform.name);
+        }
+
+        public void Die()
+        {
+            /*Restart level*/
         }
     }
 }
