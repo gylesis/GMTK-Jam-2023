@@ -25,7 +25,7 @@ namespace Dev.Scripts
             _openSequence = DOTween.Sequence()
                 .Append(_lid1.DOLocalRotate(90 * Vector3.up, 0.5f))
                 .Join(_lid2.DOLocalRotate(-90 * Vector3.up, 0.5f))
-                .Append(_spikes.DOLocalMoveZ(-1.4f, 0.25f));
+                .Append(_spikes.DOLocalMoveY(1.4f, 0.25f));
 
             _openSequence.SetAutoKill(false);
             _openSequence.Pause();
