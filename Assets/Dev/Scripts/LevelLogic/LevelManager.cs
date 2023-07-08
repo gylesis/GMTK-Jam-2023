@@ -12,6 +12,8 @@ namespace Dev.Scripts
         private LevelStateHandler _levelStateHandler;
         private LevelFactory _levelFactory;
 
+        public Level Level=> _currentLevel;
+        
         [Inject]
         private void Init(LevelsContainer levelsContainer, LevelStateHandler levelStateHandler, LevelFactory levelFactory)
         {

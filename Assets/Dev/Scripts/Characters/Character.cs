@@ -3,6 +3,7 @@ using Dev.Scripts.UI;
 using DG.Tweening;
 using UniRx;
 using UnityEngine;
+using Zenject;
 
 namespace Dev.Scripts.Characters
 {
@@ -22,12 +23,18 @@ namespace Dev.Scripts.Characters
         private bool _ableToCheck = true;
         private bool _checkForDeathCollision = false;
         private InterfaceTrackedPlatform _currentPlatform;
+        private LevelManager _levelManager;
 
         public LayerMask IgnoreMask => _ignoreMask;
         public bool Grounded => _grounded;
         public InterfaceTrackedPlatform CurrentPlatform => _currentPlatform;
         public Action OnLanded;
-        
+
+        [Inject]
+        private void Init(LevelManager levelManager)
+        {
+            _levelManager = levelManager;
+        }
         private void Awake()
         {
             Initialize();
@@ -106,7 +113,11 @@ namespace Dev.Scripts.Characters
         {
             ActivateMovement(false);
             transform.DOScale(Vector3.zero, 0.5f).SetEase(Ease.InBounce);
-            //Restart
+            
+            Observable.Timer(TimeSpan.FromMilliseconds(1000)).TakeUntilDestroy(this).Subscribe(l =>
+            {
+                _levelManager.ResetLevel();
+            });
         }
     }
 }

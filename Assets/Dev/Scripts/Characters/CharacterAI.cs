@@ -27,14 +27,21 @@ namespace Dev.Scripts.Characters
         [Header("Character")]
         [SerializeField] private Character _character;
 
-        private Spike _closestSpike;
-        private List<Spike> _spikes = new List<Spike>();
+        private InterfaceTrackedSpike _closestSpike;
+        private List<InterfaceTrackedSpike> _spikes;
+        private List<InterfaceTrackedSpike> _initialSpikes = new();
 
         private InterfaceTrackedPlatform _closestPlatform;
-        private List<InterfaceTrackedPlatform> _platforms = new List<InterfaceTrackedPlatform>();
+        private List<InterfaceTrackedPlatform> _platforms;
+        private List<InterfaceTrackedPlatform> _initialPlatforms = new();
 
-        private void Start()
+        private void Awake()
         {
+            _initialSpikes.AddRange(FindObjectsOfType<Spike>());
+            _initialSpikes.AddRange(FindObjectsOfType<ActivatedSpike>());
+            
+            _initialPlatforms.AddRange(FindObjectsOfType<Platform>());
+            _initialPlatforms.AddRange(FindObjectsOfType<StaticPlatform>());
             Initialize();
         }
 
@@ -68,19 +75,15 @@ namespace Dev.Scripts.Characters
 
         private void InitializeSpikes()
         {
-            _spikes = FindObjectsOfType<Spike>().ToList();
-            _spikes = _spikes.Where(spike => GetHorizontalDistanceTo(spike.transform) > 0).ToList();
-            _spikes = _spikes.OrderBy(spike => GetHorizontalDistanceTo(spike.transform)).ToList();
+            _spikes = _initialSpikes.Where(spike => GetHorizontalDistanceTo(spike.Transform) > 0).ToList();
+            _spikes = _spikes.OrderBy(spike => GetHorizontalDistanceTo(spike.Transform)).ToList();
 
             _closestSpike = _spikes.Count > 0 ? _spikes.First() : null;
         }
 
         private void InitializePlatforms()
         {
-            _platforms = FindObjectsOfType<Platform>().Select(platform => (InterfaceTrackedPlatform)platform).ToList();
-            _platforms.AddRange(FindObjectsOfType<StaticPlatform>().Select(platform => (InterfaceTrackedPlatform)platform).ToList());
-
-            _platforms = _platforms.Where(platform => GetHorizontalDistanceTo(platform.Transform) > 0 && platform != _character.CurrentPlatform).ToList();
+            _platforms = _initialPlatforms.Where(platform => GetHorizontalDistanceTo(platform.Transform) > 0 && platform != _character.CurrentPlatform).ToList();
             _platforms = _platforms.OrderBy(platform => GetHorizontalDistanceTo(platform.Transform)).ToList();
             
             _closestPlatform = _platforms.Count > 0 ? _platforms.First() : null;
@@ -88,12 +91,12 @@ namespace Dev.Scripts.Characters
 
         private void CheckForSpikes()
         {
-            if (!_closestSpike) return;
+            if (ReferenceEquals(_closestSpike, null)) return;
             DrawSpikeCheckRange();
-            if (Vector3.Distance(_closestSpike.transform.position, _character.transform.position) >
+            if (Vector3.Distance(_closestSpike.Transform.position, _character.transform.position) >
                 _spikeDistance) return;
 
-            Vector3 toSpike = _closestSpike.transform.position - _character.transform.position;
+            Vector3 toSpike = _closestSpike.Transform.position - _character.transform.position;
             float angle = Vector3.SignedAngle(toSpike, Vector3.right, Vector3.back);
 
             if (_lowerAngleToCheckSpikes < angle && angle < _upperAngleToCheckSpikes)
@@ -132,10 +135,10 @@ namespace Dev.Scripts.Characters
         {
             if (!_debugSpikeRays) return;
             
-            Debug.DrawLine(_character.transform.position, _closestSpike.transform.position, Color.white);
+            Debug.DrawLine(_character.transform.position, _closestSpike.Transform.position, Color.white);
             Debug.DrawLine(_character.transform.position,
                 _character.transform.position + _spikeDistance *
-                (_closestSpike.transform.position - _character.transform.position).normalized, Color.red);
+                (_closestSpike.Transform.position - _character.transform.position).normalized, Color.red);
 
             var upperAngle = Mathf.Deg2Rad * _upperAngleToCheckSpikes;
             var lowerAngle = Mathf.Deg2Rad * _lowerAngleToCheckSpikes;

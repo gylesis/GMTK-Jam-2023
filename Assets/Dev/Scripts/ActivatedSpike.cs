@@ -1,9 +1,10 @@
-﻿using Dev.Scripts.Characters;
+﻿using System;
+using Dev.Scripts.Characters;
 using UnityEngine;
 
 namespace Dev.Scripts
 {
-    public class Spike : MonoBehaviour, InterfaceTrackedSpike
+    public class ActivatedSpike : InteractionObject, InterfaceTrackedSpike
     {
         public Transform Transform => transform;
         public Collider Collider => GetComponent<Collider>();
