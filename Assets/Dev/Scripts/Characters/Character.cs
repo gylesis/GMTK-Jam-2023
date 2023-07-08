@@ -85,6 +85,10 @@ namespace Dev.Scripts.Characters
         public void Jump(float forceMultiplier = 1)
         {
             if(!_grounded) return;
+
+            var velocity = _rigidbody.velocity;
+            velocity = new Vector3(velocity.x, 0, velocity.z);
+            _rigidbody.velocity = velocity;
             
             _rigidbody.AddForce(Vector3.up * _jumpStrength * forceMultiplier);
             _grounded = false;
