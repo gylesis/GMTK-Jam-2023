@@ -7,7 +7,7 @@ namespace Dev.Scripts
     {
         public Subject<Collider> TriggerEntered { get; } = new Subject<Collider>();
 
-        private void OnTriggerEnter(Collider other)
+        protected virtual void OnTriggerEnter(Collider other)
         {
             TriggerEntered.OnNext(other);
         }

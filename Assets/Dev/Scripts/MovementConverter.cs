@@ -4,7 +4,7 @@ namespace Dev.Scripts
 {
     public class MovementConverter
     {
-        public bool HasPath(Vector3 origin, Vector3 target, Transform sender, Vector2 rawDirection, float moveUnits = 2f)
+        public bool HasPath(Vector3 origin, Vector3 target, Transform sender, Vector2 rawDirection, float moveUnits)
         {
             float offset;
 
