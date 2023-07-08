@@ -55,7 +55,6 @@ namespace Dev.Scripts
                     }));
                 }
                 
-                
                 if (_currentLevel.SavePoints.Length > 0) _lastSavePoint = _currentLevel.SavePoints.First();
                 
                 _levelStateHandler.PreStartLevel(_currentLevel);
@@ -77,13 +76,14 @@ namespace Dev.Scripts
         public void ResetLevel()
         {
             _levelStateHandler.CleanLevel(_currentLevel);
+            
             if (_lastSavePoint)
             {
                 _levelStateHandler.RestartLevel(_lastSavePoint);
             }
             else
             {
-                //_levelStateHandler.RestartLevel(_currentLevel);
+                _levelStateHandler.RestartLevel(_currentLevel);
             }
         }
 
