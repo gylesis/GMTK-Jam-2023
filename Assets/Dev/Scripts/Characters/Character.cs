@@ -66,7 +66,7 @@ namespace Dev.Scripts.Characters
             if (!_allowToMove) _rigidbody.velocity = Vector3.zero;
             else
             {
-                if (_rigidbody.velocity.sqrMagnitude < 0.1f && _checkForDeathCollision)
+                if (_rigidbody.velocity.y < 0.1f && _checkForDeathCollision)
                 {
                     Die();
                 }
