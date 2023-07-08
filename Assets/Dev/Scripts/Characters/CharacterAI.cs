@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Dev.Scripts.UI;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Dev.Scripts.Characters
@@ -109,7 +108,8 @@ namespace Dev.Scripts.Characters
             if (ReferenceEquals(_closestPlatform, null)) return;
             DrawPlatformCheckRange();
             
-            Vector3 toPlatform =  _closestPlatform.Transform.position - _character.transform.position;
+            Vector3 platformClosestPoint = _closestPlatform.Collider.bounds.ClosestPoint(_character.transform.position);
+            Vector3 toPlatform =  platformClosestPoint - _character.transform.position;
             float distanceToPlatform =  toPlatform.magnitude;
 
             if (_minimumPlatformDistance > distanceToPlatform || distanceToPlatform > _maximumPlatformDistance) return;

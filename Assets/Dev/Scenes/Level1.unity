@@ -773,7 +773,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3416908667266783345, guid: 8ee87cf184281e44ba2f8f1cb3559f4a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 26
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 3416908667266783345, guid: 8ee87cf184281e44ba2f8f1cb3559f4a, type: 3}
       propertyPath: m_LocalPosition.y
@@ -957,10 +957,6 @@ PrefabInstance:
     - target: {fileID: 4610201890536483011, guid: 971d85ef40a48c94c8c9c94462132289, type: 3}
       propertyPath: _debugPlatformRays
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4610201890536483011, guid: 971d85ef40a48c94c8c9c94462132289, type: 3}
-      propertyPath: _lowerAngleToCheckPlatforms
-      value: -30
       objectReference: {fileID: 0}
     - target: {fileID: 5991593073201279493, guid: 971d85ef40a48c94c8c9c94462132289, type: 3}
       propertyPath: m_RootOrder

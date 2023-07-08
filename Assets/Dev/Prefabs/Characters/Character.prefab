@@ -137,6 +137,7 @@ MonoBehaviour:
     m_Bits: 63
   _checkGroundPoint: {fileID: 5491534286065208671}
   _rigidbody: {fileID: 5991593073201279490}
+  _allowToMove: 1
 --- !u!114 &4610201890536483011
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -158,8 +159,8 @@ MonoBehaviour:
   _minimumPlatformDistance: 5
   _maximumPlatformDistance: 7
   _upperAngleToCheckPlatforms: 90
-  _lowerAngleToCheckPlatforms: -10
-  _debugPlatformRays: 1
+  _lowerAngleToCheckPlatforms: -30
+  _debugPlatformRays: 0
   _character: {fileID: 4543442084119466439}
 --- !u!96 &3903301286684862402
 TrailRenderer:

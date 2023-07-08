@@ -14,7 +14,7 @@ namespace Dev.Scripts.Characters
         [SerializeField] private Transform _checkGroundPoint;
         
         [SerializeField] private Rigidbody _rigidbody;
-        [SerializeField] private bool _allowToMove;
+        [SerializeField] private bool _allowToMove = true;
         
 
         private bool _grounded;
@@ -45,9 +45,13 @@ namespace Dev.Scripts.Characters
 
         private void SetSpeed()
         {
-            if (_rigidbody.velocity.magnitude < (_rigidbody.transform.right * _speed).magnitude)
+            if (!_allowToMove) _rigidbody.velocity = Vector3.zero;
+            else
             {
-                _rigidbody.velocity = _rigidbody.transform.right * _speed;
+                if (_rigidbody.velocity.magnitude < (_rigidbody.transform.right * _speed).magnitude)
+                {
+                    _rigidbody.velocity = _rigidbody.transform.right * _speed;
+                }
             }
         }
         
