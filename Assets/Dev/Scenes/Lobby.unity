@@ -625,18 +625,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 763985583716947066, guid: ba414fdef744b1443a7b5a70eeffef1c, type: 3}
-      propertyPath: m_Alpha
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 763985583716947066, guid: ba414fdef744b1443a7b5a70eeffef1c, type: 3}
-      propertyPath: m_Interactable
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 763985583716947066, guid: ba414fdef744b1443a7b5a70eeffef1c, type: 3}
-      propertyPath: m_BlocksRaycasts
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 763985583716947071, guid: ba414fdef744b1443a7b5a70eeffef1c, type: 3}
       propertyPath: m_Name
       value: LevelChooseMenu
