@@ -1,5 +1,6 @@
 ﻿using System;
 using Dev.Scripts.UI;
+using DG.Tweening;
 using UniRx;
 using UnityEngine;
 
@@ -95,7 +96,9 @@ namespace Dev.Scripts.Characters
 
         public void Die()
         {
-            /*Restart level*/
+            ActivateMovement(false);
+            transform.DOScale(Vector3.zero, 0.5f).SetEase(Ease.InBounce);
+            //Restart
         }
     }
 }
