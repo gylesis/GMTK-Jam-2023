@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Dev/Prefabs/Level/LevelsPrefab/Level_TestD.prefab.meta
+guid: 1900c266ea5d03f488071616a88385e3
+========
 guid: 4cd5f43c2a0ba6f4cb6000a659ff9b77
+>>>>>>>> 2b41b7b6be660ba9918030d7bb3b4d497f653669:Assets/Dev/Prefabs/Level/LevelSavePoint.prefab.meta
 PrefabImporter:
   externalObjects: {}
   userData: 
