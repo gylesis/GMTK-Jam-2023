@@ -20,6 +20,7 @@ namespace Dev.Scripts.Characters
 
         private bool _grounded;
         private bool _ableToCheck = true;
+        private bool _checkForDeathCollision = false;
         private InterfaceTrackedPlatform _currentPlatform;
 
         public LayerMask IgnoreMask => _ignoreMask;
@@ -42,6 +43,10 @@ namespace Dev.Scripts.Characters
         private void Initialize()
         {
             SetSpeed();
+            Observable.Timer(TimeSpan.FromMilliseconds(1000)).TakeUntilDestroy(this).Subscribe(l =>
+            {
+                _checkForDeathCollision = true;
+            });
         }
 
         public void ActivateMovement(bool active)
@@ -54,7 +59,11 @@ namespace Dev.Scripts.Characters
             if (!_allowToMove) _rigidbody.velocity = Vector3.zero;
             else
             {
-                if (_rigidbody.velocity.magnitude < (_rigidbody.transform.right * _speed).magnitude)
+                if (_rigidbody.velocity.sqrMagnitude < 0.1f && _checkForDeathCollision)
+                {
+                    Die();
+                }
+                else if (_rigidbody.velocity.magnitude < (_rigidbody.transform.right * _speed).magnitude)
                 {
                     _rigidbody.velocity = _rigidbody.transform.right * _speed;
                 }
@@ -82,16 +91,15 @@ namespace Dev.Scripts.Characters
 
         private void CheckGround()
         {
-            if (!_ableToCheck || _grounded) return;
+            if (!_ableToCheck) return;
             _grounded = Physics.Raycast(_checkGroundPoint.position, Vector3.down, out RaycastHit hit, 0.1f, _ignoreMask);
             
             if (hit.transform)
             {
                 Debug.Log(hit.transform.name);
                 _currentPlatform = hit.transform.TryGetComponent(out Platform platform) ? platform : (hit.transform.TryGetComponent(out StaticPlatform staticPlatform) ? staticPlatform : null);
+                OnLanded.Invoke();
             }
-            
-            OnLanded.Invoke();
         }
 
         public void Die()
