@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _renderer: {fileID: 3349453150060632506}
+  _moveUnits: 0
   _active: 0
 --- !u!1001 &4159690278800704830
 PrefabInstance:

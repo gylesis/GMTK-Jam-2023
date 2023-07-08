@@ -11,8 +11,6 @@ namespace Dev.Scripts
         
         private MovementConverter _movementConverter = new MovementConverter();
 
-        private int MoveUnits => _gameSettings.MoveUnitLenght;
-        
         private GameSettings _gameSettings;
 
         public InteractionObjectsPointerHandler(GameSettings gameSettings)

@@ -93,9 +93,12 @@ namespace Dev.Scripts.Characters
         {
             if (ReferenceEquals(_closestSpike, null)) return;
             DrawSpikeCheckRange();
+            
+            if (_closestSpike is ActivatedSpike {Active: false}) return;
+            
             if (Vector3.Distance(_closestSpike.Transform.position, _character.transform.position) >
                 _spikeDistance) return;
-
+            
             Vector3 toSpike = _closestSpike.Transform.position - _character.transform.position;
             float angle = Vector3.SignedAngle(toSpike, Vector3.right, Vector3.back);
 
