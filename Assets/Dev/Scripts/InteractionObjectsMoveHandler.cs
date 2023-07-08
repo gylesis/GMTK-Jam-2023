@@ -41,13 +41,14 @@ namespace Dev.Scripts
 
             if (interactionObject.IsMoving) return;
 
+            float moveUnits = interactionObject.MoveUnits;
             swipeDirection = swipeDirection.GetStraightDirection();
 
             Vector3 origin = interactionObject.transform.position;
             Vector3 targetPos = interactionObject.transform.position +
-                                new Vector3(swipeDirection.x, swipeDirection.y, 0) * MoveUnits;
+                                new Vector3(swipeDirection.x, swipeDirection.y, 0) * moveUnits;
 
-            var hasPath = _movementConverter.HasPath(origin, targetPos, interactionObject.transform, swipeDirection);
+            var hasPath = _movementConverter.HasPath(origin, targetPos, interactionObject.transform, swipeDirection, moveUnits);
 
             _mouseDownPos = Vector2.zero;
 

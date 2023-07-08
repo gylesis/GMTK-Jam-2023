@@ -91,8 +91,10 @@ namespace Dev.Scripts
 
             direction = direction.GetStraightDirection();
 
+            float moveUnits = interactionObject.MoveUnits;
+            
             Vector3 origin = interactionObject.transform.position;
-            Vector3 targetPos = origin + new Vector3(direction.x, direction.y, 0) * _gameSettings.MoveUnitLenght;
+            Vector3 targetPos = origin + new Vector3(direction.x, direction.y, 0) * moveUnits;
 
             float offset;
 
@@ -107,7 +109,7 @@ namespace Dev.Scripts
             
             Vector3 rayOrigin = origin + (Vector3) direction * offset;
             
-            var hasPath = _movementConverter.HasPath(origin, targetPos, interactionObject.transform, direction);
+            var hasPath = _movementConverter.HasPath(origin, targetPos, interactionObject.transform, direction, moveUnits);
 
             if (hasPath)
             {
