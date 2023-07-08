@@ -23,12 +23,13 @@ namespace Dev.Scripts
 
             if (_playerSpawner.TryGetPlayer(out var character))
             {
-                _cameraController.SetTarget(character.transform).StartSequence();
+                _cameraController.UpdateCameraSpeed(_gameSettings.CameraMoveToSpeed).SetTarget(character.transform).StartSequence();
             }
             
             Observable.Timer(TimeSpan.FromSeconds(_gameSettings.DelayBeforeStartLevel)).Subscribe((l =>
             {
                 character.ActivateMovement(true);
+                _cameraController.UpdateCameraSpeed(_gameSettings.CameraDefaultFollowSpeed);
             }));
         }
 

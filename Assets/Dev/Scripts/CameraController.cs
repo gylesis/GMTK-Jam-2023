@@ -146,8 +146,6 @@ namespace Dev.Scripts
                 target.x += _gameSettings.CameraOffset.XOffset;
                 target.y += _gameSettings.CameraOffset.YOffset;
                 target.z += _gameSettings.CameraOffset.ZOffset;
-
-                _speed = _gameSettings.CameraDefaultFollowSpeed;
                 
                 camera.position = Vector3.Lerp(camera.position, target, _speed * Time.deltaTime);
             }));

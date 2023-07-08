@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using UniRx;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 using Zenject;
 
@@ -39,8 +40,19 @@ namespace Dev.Scripts
                 LevelStaticData levelStaticData = _levelsContainer.GetLevelDataByLevel(level);
 
                 _currentLevel = _levelFactory.Create(levelStaticData.LevelPrefab);
+                
+                _currentLevel.FinishZone.TriggerEntered.TakeUntilDestroy(_currentLevel)
+                    .Subscribe((OnFinishZoneTriggered));
 
                 _levelStateHandler.PreStartLevel(_currentLevel);
+            }
+        }
+
+        private void OnFinishZoneTriggered(Collider other)
+        {
+            if (other.gameObject.CompareTag("Player"))
+            {
+                ResetLevel();
             }
         }
 

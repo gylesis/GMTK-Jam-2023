@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DelayBeforeStartLevel: 0.5
   MoveUnitLenght: 4
-  CameraDefaultFollowSpeed: 3
+  CameraDefaultFollowSpeed: 1.3
+  CameraMoveToSpeed: 4
   CameraOffset:
     XOffset: 6
     YOffset: 7
