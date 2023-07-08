@@ -17,6 +17,7 @@ namespace Dev.Scripts
         public override void InstallBindings()
         {
             Container.BindFactory<Level, Level, LevelFactory>().FromFactory<ILevelFactory>();
+            Container.BindFactory<PlayerSpawnContext,Character, PlayerFactory>().FromFactory<IPlayerFactory>();
             
             Container.BindInterfacesAndSelfTo<LevelManager>().AsSingle().NonLazy();
             
