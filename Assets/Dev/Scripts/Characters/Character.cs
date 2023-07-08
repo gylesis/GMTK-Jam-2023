@@ -82,9 +82,9 @@ namespace Dev.Scripts.Characters
             _rigidbody.AddForce(Vector3.down * _gravityForceStrength);
         }
 
-        public void Jump(float forceMultiplier = 1)
+        public void Jump(float forceMultiplier = 1, bool prikol = false)
         {
-            if(!_grounded) return;
+            if(!_grounded && !prikol) return;
 
             var velocity = _rigidbody.velocity;
             velocity = new Vector3(velocity.x, 0, velocity.z);

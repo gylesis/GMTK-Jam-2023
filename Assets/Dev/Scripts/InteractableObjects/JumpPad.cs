@@ -57,7 +57,7 @@ namespace Dev.Scripts.InteractableObjects
             
             if (other.TryGetComponent(out Character character))
             {
-                character.Jump(1.5f);
+                character.Jump(1.5f, true);
                 _pad.DOLocalMoveZ(1, 0.25f).SetEase(Ease.OutBounce).SetLoops(2, LoopType.Yoyo);
             }
         }
