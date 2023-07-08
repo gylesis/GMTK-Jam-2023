@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using Dev.Scripts.Infrastructure;
 using UniRx;
+using UnityEngine;
 
 namespace Dev.Scripts
 {
@@ -9,6 +11,8 @@ namespace Dev.Scripts
         private CameraController _cameraController;
         private PlayerSpawner _playerSpawner;
         private GameSettings _gameSettings;
+
+        private Dictionary<int, Vector3> _objectsOriginData = new Dictionary<int, Vector3>();
 
         public LevelStateHandler(CameraController cameraController, PlayerSpawner playerSpawner,
             GameSettings gameSettings)
@@ -20,6 +24,13 @@ namespace Dev.Scripts
 
         public void PreStartLevel(Level level)
         {
+            _objectsOriginData.Clear();
+            
+            foreach (InteractionObject interactionObject in level.InteractionObjects)
+            {
+                _objectsOriginData.Add(interactionObject.GetInstanceID(), interactionObject.transform.position);
+            }
+            
             SpawnPlayer(level);
 
             HandleCameraSpeed();
@@ -61,6 +72,11 @@ namespace Dev.Scripts
 
         public void CleanLevel(Level level)
         {
+            foreach (InteractionObject interactionObject in level.InteractionObjects)
+            {
+                interactionObject.transform.position = _objectsOriginData[interactionObject.GetInstanceID()];
+            }
+
             _playerSpawner.RemovePlayer();
         }
 
