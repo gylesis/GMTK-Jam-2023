@@ -4,12 +4,23 @@ namespace Dev.Scripts
 {
     public class MovementConverter
     {
-        public bool HasPath(Vector3 origin, Vector3 target, Transform sender, float moveUnits = 2f)
+        public bool HasPath(Vector3 origin, Vector3 target, Transform sender, Vector2 rawDirection, float moveUnits = 2f)
         {
-            Vector3 rayDirection = (target - origin).normalized;
-            Vector3 rayOrigin = origin + rayDirection * (sender.transform.localScale.x / 2f);
+            float offset;
 
-            var hits = Physics.RaycastAll(rayOrigin, rayDirection, moveUnits);
+            if (rawDirection == Vector2.up || rawDirection == Vector2.down)
+            {
+                offset = (sender.transform.localScale.y / 2f);
+            }
+            else
+            {
+                offset = (sender.transform.localScale.x / 2f);
+            }
+            
+            Vector3 rayDirection = (target - origin).normalized;
+            Vector3 rayOrigin = origin + rayDirection * offset;
+
+            var hits = Physics.RaycastAll(rayOrigin, rayDirection, moveUnits * 2);
 
             if (hits.Length > 0)
             {
@@ -24,6 +35,10 @@ namespace Dev.Scripts
                     }
                 }
             }
+            else
+            {
+                return true;
+            }
             
             Debug.DrawLine(rayOrigin, target, Color.red);
 
@@ -33,7 +48,7 @@ namespace Dev.Scripts
 
             Debug.Log($"magnitude {magnitude}");
                 
-            return magnitude <= moveUnits;
+            return magnitude >= moveUnits;
         }   
         
     }

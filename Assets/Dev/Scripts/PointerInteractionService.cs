@@ -1,5 +1,6 @@
-﻿using DG.Tweening;
+﻿using Dev.Scripts.Infrastructure;
 using UnityEngine;
+using VContainer;
 
 namespace Dev.Scripts
 {
@@ -8,18 +9,27 @@ namespace Dev.Scripts
         [SerializeField] private LayerMask _interactionObjLayerMask;
         [SerializeField] private float _hitRadius = 0.5f;
 
-        [SerializeField] private float _moveUnits = 2f;
-        [SerializeField] private float _deadZoneThreshold = 50f;
-        
         private InteractionObject _selectedObject;
 
         private Vector2 _downPos = Vector2.down;
+        private MovementConverter _movementConverter;
+        private InteractionObjectsPointerHandler _objectsPointerHandler;
+        private GameSettings _gameSettings;
+        private LineDrawer _lineDrawer;
 
-        private MovementConverter _movementConverter = new MovementConverter();
-        
+
+        [Inject]
+        private void Init(MovementConverter movementConverter, InteractionObjectsPointerHandler objectsPointerHandler, GameSettings gameSettings, LineDrawer lineDrawer)
+        {
+            _lineDrawer = lineDrawer;
+            _gameSettings = gameSettings;
+            _objectsPointerHandler = objectsPointerHandler;
+            _movementConverter = movementConverter;
+        }
+            
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Mouse0) )
+            if (Input.GetKeyDown(KeyCode.Mouse0))
             {
                 PointerDownHandle();
             }
@@ -43,9 +53,9 @@ namespace Dev.Scripts
 
             if (raycast == false)
             {
-                UnSelectCurrentInteractionObj();
-                
-               // Debug.Log($"No object for raycast!");
+                TryUnSelectCurrentInteractionObj();
+
+                // Debug.Log($"No object for raycast!");
                 return;
             }
 
@@ -54,12 +64,12 @@ namespace Dev.Scripts
             if (hasInteraction)
             {
                 _downPos = Input.mousePosition;
-              //  Debug.Log($"Has interaction component");
+                //  Debug.Log($"Has interaction component");
                 OnDown(interactionObject);
             }
             else
             {
-               // Debug.Log($"Does not have interaction component");
+                // Debug.Log($"Does not have interaction component");
             }
         }
 
@@ -67,102 +77,45 @@ namespace Dev.Scripts
         {
             if (_selectedObject == null) return;
 
-            OnSwipe(_selectedObject);
+            OnUp(_selectedObject);
         }
 
         private void OnDrag(InteractionObject interactionObject)
         {
             Vector2 up = Input.mousePosition;
             Vector2 direction = up - _downPos;
-            
-            direction = GetStraightDirection(direction);
+
+            direction = direction.GetStraightDirection();
 
             Vector3 origin = interactionObject.transform.position;
-            Vector3 targetPos = origin + new Vector3(direction.x, direction.y, 0) * _moveUnits;
+            Vector3 targetPos = origin + new Vector3(direction.x, direction.y, 0) * _gameSettings.MoveUnitLenght;
 
-            var hasPath = _movementConverter.HasPath(origin, targetPos, interactionObject.transform);
-
-            Debug.DrawRay(origin, direction, Color.blue);
+            _lineDrawer.DrawLine(origin, targetPos);
             
-            Debug.Log($"Has Path {hasPath}");
+            var hasPath = _movementConverter.HasPath(origin, targetPos, interactionObject.transform, direction);
         }
 
-        private void OnSwipe(InteractionObject interactionObject)
+        private void OnUp(InteractionObject interactionObject)
         {
-            Vector2 up = Input.mousePosition;
-            Vector2 direction = up - _downPos;
-
-            var magnitude = direction.magnitude;
-
-            if (magnitude < _deadZoneThreshold) return;
-            
-            if(interactionObject.IsMoving) return;
-            
-            direction = GetStraightDirection(direction);
-
-            interactionObject.OnSwipe(direction);
-
-            Vector3 targetPos = interactionObject.transform.position + new Vector3(direction.x, direction.y, 0) * _moveUnits;
-
-            interactionObject.IsMoving = true;
-            interactionObject.transform.DOMove(targetPos, 0.2f).OnComplete((() => interactionObject.IsMoving = false));
-            
-            //Debug.DrawRay(interactionObject.transform.position, direction, Color.black, 2f);
-            
-            _downPos = Vector2.zero;
-            
-           // Debug.Log($"Swipe Direction {direction}");
+            _objectsPointerHandler.Up(interactionObject);
         }
 
         private void OnDown(InteractionObject interactionObject)
         {
-            UnSelectCurrentInteractionObj();
+            TryUnSelectCurrentInteractionObj();
 
             _selectedObject = interactionObject;
 
-            _selectedObject.OnDown();
-            
-            _selectedObject.SetColor(Color.yellow);
+            _objectsPointerHandler.Down(interactionObject);
         }
 
-        private Vector2 GetStraightDirection(Vector2 rawDirection)
-        {
-            rawDirection.Normalize();
-            
-            Vector2 direction;
-
-            if (rawDirection.y > 0.5f )
-            {
-                direction = Vector2.up;
-            }
-            else if (rawDirection.x > 0.5f)
-            {
-                direction = Vector2.right;
-            }
-            else if (rawDirection.x < -0.5f)
-            {
-                direction = Vector2.left;
-            }
-            else if (rawDirection.y < -0.5f)
-            {
-                direction = Vector2.down;
-            }
-            else
-            {
-                direction = Vector2.zero;
-            }
-
-            return direction;
-        }
-
-        private void UnSelectCurrentInteractionObj()
+        private void TryUnSelectCurrentInteractionObj()
         {
             if (_selectedObject != null)
             {
                 _selectedObject.SetOriginColor();
                 _selectedObject = null;
-            } 
+            }
         }
-        
     }
 }
