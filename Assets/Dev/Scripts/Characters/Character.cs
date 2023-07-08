@@ -14,6 +14,8 @@ namespace Dev.Scripts.Characters
         [SerializeField] private Transform _checkGroundPoint;
         
         [SerializeField] private Rigidbody _rigidbody;
+        [SerializeField] private bool _allowToMove;
+        
 
         private bool _grounded;
         private bool _ableToCheck = true;

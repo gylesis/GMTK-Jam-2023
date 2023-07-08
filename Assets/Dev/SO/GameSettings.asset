@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abf3496418c746e29fa176897b52bfe5, type: 3}
   m_Name: GameSettings
   m_EditorClassIdentifier: 
-  MoveUnitLenght: 2
+  MoveUnitLenght: 4
