@@ -1,4 +1,5 @@
 ﻿using System;
+using Dev.Scripts.UI;
 using UniRx;
 using UnityEngine;
 
@@ -16,9 +17,11 @@ namespace Dev.Scripts.Characters
 
         private bool _grounded;
         private bool _ableToCheck = true;
+        private InterfaceTrackedPlatform _currentPlatform;
 
         public LayerMask IgnoreMask => _ignoreMask;
         public bool Grounded => _grounded;
+        public InterfaceTrackedPlatform CurrentPlatform => _currentPlatform;
         public Action OnLanded;
         
         private void Awake()
@@ -51,13 +54,13 @@ namespace Dev.Scripts.Characters
             _rigidbody.AddForce(Vector3.down * _gravityForceStrength);
         }
 
-        public void Jump()
+        public void Jump(float forceMultiplier = 1)
         {
             if(!_grounded) return;
             
-            _rigidbody.AddForce(Vector3.up * _jumpStrength);
+            _rigidbody.AddForce(Vector3.up * _jumpStrength * forceMultiplier);
             _grounded = false;
-
+            _currentPlatform = null;
             _ableToCheck = false;
             Observable.Timer(TimeSpan.FromMilliseconds(200)).TakeUntilDestroy(this).Subscribe(l =>
             {
@@ -70,9 +73,13 @@ namespace Dev.Scripts.Characters
             if (!_ableToCheck || _grounded) return;
             _grounded = Physics.Raycast(_checkGroundPoint.position, Vector3.down, out RaycastHit hit, 0.1f, _ignoreMask);
             
-            OnLanded.Invoke();
+            if (hit.transform)
+            {
+                Debug.Log(hit.transform.name);
+                _currentPlatform = hit.transform.TryGetComponent(out Platform platform) ? platform : (hit.transform.TryGetComponent(out StaticPlatform staticPlatform) ? staticPlatform : null);
+            }
             
-            if(hit.transform) Debug.Log(hit.transform.name);
+            OnLanded.Invoke();
         }
 
         public void Die()

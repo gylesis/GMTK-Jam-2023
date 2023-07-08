@@ -71,11 +71,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5991593073201279493}
-  - component: {fileID: 5991593073201279494}
   - component: {fileID: 5991593073201279490}
   - component: {fileID: 4543442084119466439}
   - component: {fileID: 4610201890536483011}
   - component: {fileID: 3903301286684862402}
+  - component: {fileID: 4156171357328400103}
   m_Layer: 6
   m_Name: Character
   m_TagString: Untagged
@@ -101,19 +101,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &5991593073201279494
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5991593073201279497}
-  m_Material: {fileID: 13400000, guid: 04fdc6b8355ce66459176f0fd17ea8e1, type: 2}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &5991593073201279490
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -144,7 +131,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 4
   _jumpStrength: 600
-  _gravityForceStrength: 20
+  _gravityForceStrength: 15
   _ignoreMask:
     serializedVersion: 2
     m_Bits: 55
@@ -166,7 +153,13 @@ MonoBehaviour:
   _cliffDetectDistance: 5
   _spikeDistance: 2
   _upperAngleToCheckSpikes: 45
-  _lowerAngleToCheckSpikes: 10
+  _lowerAngleToCheckSpikes: -10
+  _debugSpikeRays: 0
+  _minimumPlatformDistance: 5
+  _maximumPlatformDistance: 7
+  _upperAngleToCheckPlatforms: 90
+  _lowerAngleToCheckPlatforms: -10
+  _debugPlatformRays: 1
   _character: {fileID: 4543442084119466439}
 --- !u!96 &3903301286684862402
 TrailRenderer:
@@ -267,6 +260,19 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
+--- !u!135 &4156171357328400103
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5991593073201279497}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5991593073654745524
 GameObject:
   m_ObjectHideFlags: 0
