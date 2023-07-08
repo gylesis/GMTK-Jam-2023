@@ -3535,7 +3535,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2031266994369405420, guid: 4b55fa6f26dd092428d40895891eb5bc, type: 3}
       propertyPath: _savePoints.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2031266994369405420, guid: 4b55fa6f26dd092428d40895891eb5bc, type: 3}
       propertyPath: _savePoints.Array.data[1]
@@ -3545,6 +3545,10 @@ PrefabInstance:
       propertyPath: _savePoints.Array.data[2]
       value: 
       objectReference: {fileID: 6713284306478025689}
+    - target: {fileID: 2031266994369405420, guid: 4b55fa6f26dd092428d40895891eb5bc, type: 3}
+      propertyPath: _savePoints.Array.data[3]
+      value: 
+      objectReference: {fileID: 2561707057719427121}
     - target: {fileID: 2031266994369405421, guid: 4b55fa6f26dd092428d40895891eb5bc, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -8737,7 +8741,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5027458913985287903, guid: 4cd5f43c2a0ba6f4cb6000a659ff9b77, type: 3}
       propertyPath: m_Name
-      value: LevelSavePoint5 (2)
+      value: "LevelSavePoint \u21163"
       objectReference: {fileID: 0}
     - target: {fileID: 9209244678056273218, guid: 4cd5f43c2a0ba6f4cb6000a659ff9b77, type: 3}
       propertyPath: m_RootOrder
@@ -8789,6 +8793,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4cd5f43c2a0ba6f4cb6000a659ff9b77, type: 3}
+--- !u!114 &2561707057719427121 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1793180548524852696, guid: 4cd5f43c2a0ba6f4cb6000a659ff9b77, type: 3}
+  m_PrefabInstance: {fileID: 4282829556639630825}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2347b5aae7bf48419c08764150966ffd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4310322208448777658
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9470,7 +9485,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5027458913985287903, guid: 4cd5f43c2a0ba6f4cb6000a659ff9b77, type: 3}
       propertyPath: m_Name
-      value: LevelSavePoint5
+      value: LevelSavePoint #2
       objectReference: {fileID: 0}
     - target: {fileID: 9209244678056273218, guid: 4cd5f43c2a0ba6f4cb6000a659ff9b77, type: 3}
       propertyPath: m_RootOrder
@@ -10268,7 +10283,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5027458913985287903, guid: 4cd5f43c2a0ba6f4cb6000a659ff9b77, type: 3}
       propertyPath: m_Name
-      value: LevelSavePoint5 (1)
+      value: "LevelSavePoint \u21161"
       objectReference: {fileID: 0}
     - target: {fileID: 9209244678056273218, guid: 4cd5f43c2a0ba6f4cb6000a659ff9b77, type: 3}
       propertyPath: m_RootOrder
