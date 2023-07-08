@@ -1,4 +1,5 @@
-﻿using DG.Tweening;
+﻿using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 namespace Dev.Scripts
@@ -7,8 +8,11 @@ namespace Dev.Scripts
     {
         [SerializeField] private Renderer _renderer;
         [SerializeField] private int _moveUnits;
+        [SerializeField] private List<SwipeDirection> _allowedSwipeDirection;
 
-        public int MoveUnits => _moveUnits;
+        public List<SwipeDirection> AllowedSwipeDirection => _allowedSwipeDirection;
+
+        public int MoveUnits => _moveUnits; 
 
         private Color _originColor;
 
@@ -22,6 +26,17 @@ namespace Dev.Scripts
 
         private void Awake()
         {
+            if (_allowedSwipeDirection.Count == 0)
+            {
+                _allowedSwipeDirection = new List<SwipeDirection>()
+                {
+                    SwipeDirection.Left,
+                    SwipeDirection.Right,
+                    SwipeDirection.Up,
+                    SwipeDirection.Down
+                };
+            }
+            
             _renderer = GetComponent<Renderer>();
             _originColor = _renderer.material.color;
         }
@@ -66,4 +81,13 @@ namespace Dev.Scripts
             interactionObject.transform.DOMove(targetPos, 0.5f).SetEase(Ease.Linear);
         }
     }
+
+    public enum SwipeDirection
+    {
+        Up,
+        Down,
+        Left,
+        Right
+    }
+    
 }
