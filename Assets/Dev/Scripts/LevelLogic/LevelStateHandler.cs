@@ -10,7 +10,8 @@ namespace Dev.Scripts
         private PlayerSpawner _playerSpawner;
         private GameSettings _gameSettings;
 
-        public LevelStateHandler(CameraController cameraController, PlayerSpawner playerSpawner, GameSettings gameSettings)
+        public LevelStateHandler(CameraController cameraController, PlayerSpawner playerSpawner,
+            GameSettings gameSettings)
         {
             _gameSettings = gameSettings;
             _playerSpawner = playerSpawner;
@@ -24,9 +25,16 @@ namespace Dev.Scripts
             HandleCameraSpeed();
         }
 
-        public void RestartLevel(LevelSavePoint savePoint)
+        public void RestartLevel(Level level)
         {
-            SpawnPlayer(savePoint);
+            SpawnPlayer(level);
+
+            HandleCameraSpeed();
+        }
+
+        public void RestartLevel(LevelSavePoint levelSavePoint)
+        {
+            SpawnPlayer(levelSavePoint);
 
             HandleCameraSpeed();
         }
@@ -35,9 +43,10 @@ namespace Dev.Scripts
         {
             if (_playerSpawner.TryGetPlayer(out var character))
             {
-                _cameraController.UpdateCameraSpeed(_gameSettings.CameraMoveToSpeed).SetTarget(character.transform).StartSequence();
+                _cameraController.UpdateCameraSpeed(_gameSettings.CameraMoveToSpeed).SetTarget(character.transform)
+                    .StartSequence();
             }
-            
+
             Observable.Timer(TimeSpan.FromSeconds(_gameSettings.DelayBeforeStartLevel)).Subscribe((l =>
             {
                 SetPlayerMovementState(true);
@@ -49,16 +58,16 @@ namespace Dev.Scripts
         {
             SetPlayerMovementState(false);
         }
-        
+
         public void CleanLevel(Level level)
         {
             _playerSpawner.RemovePlayer();
         }
-        
+
         private void SpawnPlayer(Level level)
-        {   
+        {
             _playerSpawner.SpawnPlayerOnLevel(level);
-            
+
             SetPlayerMovementState(false);
         }
 
@@ -77,6 +86,5 @@ namespace Dev.Scripts
                 character.ActivateMovement(isOn);
             }
         }
-
     }
 }

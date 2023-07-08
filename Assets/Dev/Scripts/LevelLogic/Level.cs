@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Dev.Scripts
 {
@@ -10,10 +11,16 @@ namespace Dev.Scripts
         [SerializeField] private PlayerTriggerBox _finishZone;
         
         public PlayerTriggerBox FinishZone => _finishZone;
-
         public SpawnPoint StartPoint => _startPoint;
-
         public LevelSavePoint[] SavePoints => _savePoints;
+
+        private void Awake()
+        {
+            var interactionObjects = GetComponentsInChildren<InteractionObject>();
+
+           
+        }
+
 
         private void OnTransformChildrenChanged()
         {
