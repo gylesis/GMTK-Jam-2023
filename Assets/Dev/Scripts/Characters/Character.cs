@@ -66,11 +66,11 @@ namespace Dev.Scripts.Characters
             if (!_allowToMove) _rigidbody.velocity = Vector3.zero;
             else
             {
-                if (_rigidbody.velocity.y < 0.1f && _checkForDeathCollision)
+                if (_rigidbody.velocity.x < 0.1f && _checkForDeathCollision)
                 {
                     Die();
                 }
-                else if (_rigidbody.velocity.magnitude < (_rigidbody.transform.right * _speed).magnitude)
+                else if (_rigidbody.velocity.x < (_rigidbody.transform.right * _speed).magnitude)
                 {
                     _rigidbody.velocity = _rigidbody.transform.right * _speed;
                 }
