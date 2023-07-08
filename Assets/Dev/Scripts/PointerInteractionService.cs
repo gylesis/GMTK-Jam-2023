@@ -16,10 +16,12 @@ namespace Dev.Scripts
         private InteractionObjectsPointerHandler _objectsPointerHandler;
         private GameSettings _gameSettings;
         private LineDrawer _lineDrawer;
+        private CameraContainer _cameraContainer;
 
         [Inject]
-        private void Init(MovementConverter movementConverter, InteractionObjectsPointerHandler objectsPointerHandler, GameSettings gameSettings, LineDrawer lineDrawer)
+        private void Init(MovementConverter movementConverter, InteractionObjectsPointerHandler objectsPointerHandler, GameSettings gameSettings, LineDrawer lineDrawer, CameraContainer cameraContainer)
         {
+            _cameraContainer = cameraContainer;
             _lineDrawer = lineDrawer;
             _gameSettings = gameSettings;
             _objectsPointerHandler = objectsPointerHandler;
@@ -46,7 +48,7 @@ namespace Dev.Scripts
 
         private void PointerDownHandle()
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            Ray ray = _cameraContainer.Camera.ScreenPointToRay(Input.mousePosition);
 
             bool raycast = Physics.SphereCast(ray, _hitRadius, out var hit, 99, _interactionObjLayerMask);
 

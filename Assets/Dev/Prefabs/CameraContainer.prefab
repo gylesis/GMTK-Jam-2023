@@ -163,4 +163,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 580576605c59427abb306a167ed6cd76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Camera: {fileID: 4795415708974726545}
   Transform: {fileID: 4795415710224283614}

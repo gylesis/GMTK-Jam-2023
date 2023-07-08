@@ -7,12 +7,13 @@ namespace Dev.Scripts
     {
         private Character _characterPrefab;
         private Character _spawnedCharacter;
+        private PlayerFactory _playerFactory;
 
-        public PlayerSpawner(Character characterPrefab)
+        public PlayerSpawner(Character characterPrefab, PlayerFactory playerFactory)
         {
+            _playerFactory = playerFactory;
             _characterPrefab = characterPrefab;
         }
-
 
         public bool TryGetPlayer(out Character character)
         {
@@ -20,12 +21,17 @@ namespace Dev.Scripts
 
             return _spawnedCharacter != null;
         }
-        
+
         public void SpawnPlayerOnLevel(Level level)
         {
             Transform levelStartPoint = level.StartPoint;
 
-            _spawnedCharacter = Object.Instantiate(_characterPrefab, levelStartPoint.position, Quaternion.identity);
+            var playerSpawnContext = new PlayerSpawnContext();
+
+            playerSpawnContext.Pos = levelStartPoint.position;
+            playerSpawnContext.Prefab = _characterPrefab;
+
+            _spawnedCharacter = _playerFactory.Create(playerSpawnContext);
         }
 
         public void RemovePlayer()
@@ -35,6 +41,13 @@ namespace Dev.Scripts
                 Object.Destroy(_spawnedCharacter.gameObject);
             }
         }
-        
     }
+
+    public struct PlayerSpawnContext
+    {
+        public Character Prefab;
+        public Vector3 Pos;
+    }
+
+   
 }
