@@ -17,9 +17,12 @@ namespace Dev.Scripts.InteractableObjects
         private void Awake()
         {
             _openSequence = DOTween.Sequence()
-                .Append(_lid1.DORotate(90 * Vector3.up, 0.5f))
-                .Join(_lid2.DORotate(-90 * Vector3.up, 0.5f))
-                .Append(_pad.DOLocalMoveZ(0, 0.5f));
+                .Append(_lid1.DOLocalRotate(90 * Vector3.up, 0.5f))
+                .Join(_lid2.DOLocalRotate(-90 * Vector3.up, 0.5f))
+                .Append(_pad.DOLocalMoveZ(-0.5f, 0.25f));
+
+            _openSequence.SetAutoKill(false);
+            _openSequence.Pause();
         }
 
         public override void OnDown()
@@ -29,7 +32,17 @@ namespace Dev.Scripts.InteractableObjects
 
         public void Toggle()
         {
+            if (_openSequence.IsPlaying()) return;
+            
             _active = !_active;
+            if (_active)
+            {
+                _openSequence.PlayForward();
+            }
+            else
+            {
+                _openSequence.PlayBackwards();
+            }
         }
 
         private void OnTriggerEnter(Collider other)
@@ -39,6 +52,7 @@ namespace Dev.Scripts.InteractableObjects
             if (other.TryGetComponent(out Character character))
             {
                 character.Jump(1.5f);
+                _pad.DOLocalMoveZ(1f, 0.25f).SetEase(Ease.OutBounce).SetLoops(2, LoopType.Yoyo);
             }
         }
     }
