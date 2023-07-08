@@ -79,7 +79,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43e7f5f0816d409c88722689566a5fdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _savePoints: []
+  _savePoints:
+  - {fileID: 3619379155711648106}
   _startPoint: {fileID: 1258805708994241703}
   _finishZone: {fileID: 290192901535048905}
 --- !u!1 &5745472251457435498
@@ -236,6 +237,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4cd5f43c2a0ba6f4cb6000a659ff9b77, type: 3}
+--- !u!114 &3619379155711648106 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1793180548524852696, guid: 4cd5f43c2a0ba6f4cb6000a659ff9b77, type: 3}
+  m_PrefabInstance: {fileID: 3087277052396807346}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2347b5aae7bf48419c08764150966ffd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &6131080395554341360 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9209244678056273218, guid: 4cd5f43c2a0ba6f4cb6000a659ff9b77, type: 3}
