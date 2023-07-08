@@ -21,18 +21,6 @@ namespace Dev.Scripts
         {
             SpawnPlayer(level);
 
-            HandleCameraSpeed();
-        }
-
-        public void RestartLevel(LevelSavePoint savePoint)
-        {
-            SpawnPlayer(savePoint);
-
-            HandleCameraSpeed();
-        }
-
-        private void HandleCameraSpeed()
-        {
             if (_playerSpawner.TryGetPlayer(out var character))
             {
                 _cameraController.UpdateCameraSpeed(_gameSettings.CameraMoveToSpeed).SetTarget(character.transform).StartSequence();
@@ -40,43 +28,25 @@ namespace Dev.Scripts
             
             Observable.Timer(TimeSpan.FromSeconds(_gameSettings.DelayBeforeStartLevel)).Subscribe((l =>
             {
-                SetPlayerMovementState(true);
+                character.ActivateMovement(true);
                 _cameraController.UpdateCameraSpeed(_gameSettings.CameraDefaultFollowSpeed);
             }));
         }
 
-        public void FinishLevel(Level level)
-        {
-            SetPlayerMovementState(false);
-        }
-        
         public void CleanLevel(Level level)
         {
             _playerSpawner.RemovePlayer();
         }
         
         private void SpawnPlayer(Level level)
-        {   
+        {
             _playerSpawner.SpawnPlayerOnLevel(level);
             
-            SetPlayerMovementState(false);
-        }
-
-        private void SpawnPlayer(LevelSavePoint levelSavePoint)
-        {
-            _playerSpawner.SpawnPlayerOnLevel(levelSavePoint);
-
-            SetPlayerMovementState(false);
-        }
-
-
-        private void SetPlayerMovementState(bool isOn)
-        {
             if (_playerSpawner.TryGetPlayer(out var character))
             {
-                character.ActivateMovement(isOn);
+                character.ActivateMovement(false);
             }
         }
-
+        
     }
 }

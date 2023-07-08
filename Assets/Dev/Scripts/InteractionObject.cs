@@ -6,9 +6,6 @@ namespace Dev.Scripts
     public abstract class InteractionObject : MonoBehaviour
     {
         [SerializeField] private Renderer _renderer;
-        [SerializeField] private int _moveUnits;
-
-        public int MoveUnits => _moveUnits;
 
         private Color _originColor;
 

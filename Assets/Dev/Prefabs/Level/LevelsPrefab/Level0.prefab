@@ -3529,6 +3529,7 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: -5.02
       objectReference: {fileID: 0}
+<<<<<<< HEAD
     - target: {fileID: 2031266994201464271, guid: 4b55fa6f26dd092428d40895891eb5bc, type: 3}
       propertyPath: m_Name
       value: LevelSavePoint
@@ -3545,6 +3546,8 @@ PrefabInstance:
       propertyPath: _savePoints.Array.data[2]
       value: 
       objectReference: {fileID: 6713284306478025689}
+=======
+>>>>>>> parent of b566c7c (Merge branch 'main' of https://github.com/gylesis/GMTK-Jam-2023)
     - target: {fileID: 2031266994369405421, guid: 4b55fa6f26dd092428d40895891eb5bc, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -3591,6 +3594,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2031266994369405422, guid: 4b55fa6f26dd092428d40895891eb5bc, type: 3}
       propertyPath: m_Name
+<<<<<<< HEAD
       value: Level0
       objectReference: {fileID: 0}
     - target: {fileID: 2048968031767633731, guid: 4b55fa6f26dd092428d40895891eb5bc, type: 3}
@@ -3624,6 +3628,9 @@ PrefabInstance:
     - target: {fileID: 2613629253393054873, guid: 4b55fa6f26dd092428d40895891eb5bc, type: 3}
       propertyPath: m_LocalPosition.y
       value: 6.1
+=======
+      value: Level0 Variant
+>>>>>>> parent of b566c7c (Merge branch 'main' of https://github.com/gylesis/GMTK-Jam-2023)
       objectReference: {fileID: 0}
     - target: {fileID: 8206773412424588447, guid: 4b55fa6f26dd092428d40895891eb5bc, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6207,10 +6214,6 @@ PrefabInstance:
     - target: {fileID: 3416908667266783345, guid: 8ee87cf184281e44ba2f8f1cb3559f4a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5366233006208661879, guid: 8ee87cf184281e44ba2f8f1cb3559f4a, type: 3}
-      propertyPath: _moveUnits
-      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ee87cf184281e44ba2f8f1cb3559f4a, type: 3}

@@ -24,28 +24,15 @@ namespace Dev.Scripts
 
         public void SpawnPlayerOnLevel(Level level)
         {
-            Vector3 spawnPos = level.StartPoint.GetPos();
+            Transform levelStartPoint = level.StartPoint;
 
             var playerSpawnContext = new PlayerSpawnContext();
 
-            playerSpawnContext.Pos = spawnPos;
+            playerSpawnContext.Pos = levelStartPoint.position;
             playerSpawnContext.Prefab = _characterPrefab;
 
             _spawnedCharacter = _playerFactory.Create(playerSpawnContext);
         }
-
-        public void SpawnPlayerOnLevel(LevelSavePoint levelSavePoint)
-        {
-            Vector3 spawnPos = levelSavePoint.GetSpawnPos();
-
-            var playerSpawnContext = new PlayerSpawnContext();
-
-            playerSpawnContext.Pos = spawnPos;
-            playerSpawnContext.Prefab = _characterPrefab;
-
-            _spawnedCharacter = _playerFactory.Create(playerSpawnContext);
-        }
-
 
         public void RemovePlayer()
         {
@@ -61,4 +48,6 @@ namespace Dev.Scripts
         public Character Prefab;
         public Vector3 Pos;
     }
+
+   
 }

@@ -4,20 +4,12 @@ namespace Dev.Scripts
 {
     public class Level : MonoBehaviour
     {
-        [SerializeField] private LevelSavePoint[] _savePoints;  
+        [SerializeField] private Transform _startPoint;
+        [SerializeField] private TriggerBox _finishZone;
         
-        [SerializeField] private SpawnPoint _startPoint;
-        [SerializeField] private PlayerTriggerBox _finishZone;
-        
-        public PlayerTriggerBox FinishZone => _finishZone;
+        public TriggerBox FinishZone => _finishZone;
 
-        public SpawnPoint StartPoint => _startPoint;
+        public Transform StartPoint => _startPoint;
 
-        public LevelSavePoint[] SavePoints => _savePoints;
-
-        private void OnTransformChildrenChanged()
-        {
-            _savePoints = GetComponentsInChildren<LevelSavePoint>();
-        }
     }
 }
