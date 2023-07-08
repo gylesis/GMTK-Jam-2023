@@ -46,8 +46,6 @@ namespace Dev.Scripts
             
             float magnitude = direction.magnitude;
 
-            Debug.Log($"magnitude {magnitude}");
-                
             return magnitude >= moveUnits;
         }   
         

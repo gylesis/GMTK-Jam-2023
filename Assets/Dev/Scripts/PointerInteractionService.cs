@@ -17,7 +17,6 @@ namespace Dev.Scripts
         private GameSettings _gameSettings;
         private LineDrawer _lineDrawer;
 
-
         [Inject]
         private void Init(MovementConverter movementConverter, InteractionObjectsPointerHandler objectsPointerHandler, GameSettings gameSettings, LineDrawer lineDrawer)
         {
@@ -71,10 +70,13 @@ namespace Dev.Scripts
             {
                 // Debug.Log($"Does not have interaction component");
             }
+          
         }
 
         private void PointerUpHandle()
         {
+            _lineDrawer.StopDrawing();
+            
             if (_selectedObject == null) return;
 
             OnUp(_selectedObject);
@@ -90,9 +92,29 @@ namespace Dev.Scripts
             Vector3 origin = interactionObject.transform.position;
             Vector3 targetPos = origin + new Vector3(direction.x, direction.y, 0) * _gameSettings.MoveUnitLenght;
 
-            _lineDrawer.DrawLine(origin, targetPos);
+            float offset;
+
+            if (direction == Vector2.up || direction == Vector2.down)
+            {
+                offset = (interactionObject.transform.localScale.y / 2f);
+            }
+            else
+            {
+                offset = (interactionObject.transform.localScale.x / 2f);
+            }
+            
+            Vector3 rayOrigin = origin + (Vector3) direction * offset;
             
             var hasPath = _movementConverter.HasPath(origin, targetPos, interactionObject.transform, direction);
+
+            if (hasPath)
+            {
+                _lineDrawer.DrawLine(rayOrigin, targetPos);
+            }
+            else
+            {
+                _lineDrawer.StopDrawing();
+            }
         }
 
         private void OnUp(InteractionObject interactionObject)
