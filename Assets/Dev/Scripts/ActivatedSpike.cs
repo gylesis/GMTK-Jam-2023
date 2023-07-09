@@ -22,14 +22,16 @@ namespace Dev.Scripts
         public Collider Collider => GetComponent<Collider>();
 
         public bool Active => _active;
-        
+
+        public Transform Spikes => _spikes;
+
         private void Awake()
         {
             _initialState = _active;
             _openSequence = DOTween.Sequence()
                 .Append(_lid1.DOLocalRotate(90 * Vector3.up, 0.5f))
-                .Join(_lid2.DOLocalRotate(-90 * Vector3.up, 0.5f))
-                .Append(_spikes.DOLocalMoveY(1.4f, 0.25f));
+                .Join(_lid2.DOLocalRotate(-90 * Vector3.up + -180 * Vector3.right, 0.5f))
+                .Append(Spikes.DOLocalMoveY(1.4f, 0.25f));
 
             _openSequence.SetAutoKill(false);
             _openSequence.Pause();

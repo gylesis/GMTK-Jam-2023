@@ -124,6 +124,14 @@ PrefabInstance:
       propertyPath: _moveUnits
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 5366233006208661879, guid: 8ee87cf184281e44ba2f8f1cb3559f4a, type: 3}
+      propertyPath: _ableToReset
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5366233006208661879, guid: 8ee87cf184281e44ba2f8f1cb3559f4a, type: 3}
+      propertyPath: _allowToReset
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6681320444448423015, guid: 8ee87cf184281e44ba2f8f1cb3559f4a, type: 3}
       propertyPath: m_RootOrder
       value: 13

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Dev.Scripts
 {
@@ -9,7 +10,7 @@ namespace Dev.Scripts
         [SerializeField] private Renderer _renderer;
         [SerializeField] private int _moveUnits;
         [SerializeField] private List<SwipeDirection> _allowedSwipeDirection;
-        [SerializeField] private bool _allowToReset;
+        [SerializeField] private bool _ableToReset = true;
 
         public List<SwipeDirection> AllowedSwipeDirection => _allowedSwipeDirection;
 
@@ -19,7 +20,7 @@ namespace Dev.Scripts
 
         public bool IsMoving { get; set; }
 
-        public bool AllowToReset => _allowToReset;
+        public bool AbleToReset => _ableToReset;
 
         protected virtual void Awake()
         {
