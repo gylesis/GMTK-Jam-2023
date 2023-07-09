@@ -19,7 +19,8 @@ namespace Dev.Scripts
         private CameraContainer _cameraContainer;
 
         [Inject]
-        private void Init(MovementConverter movementConverter, InteractionObjectsPointerHandler objectsPointerHandler, GameSettings gameSettings, LineDrawer lineDrawer, CameraContainer cameraContainer)
+        private void Init(MovementConverter movementConverter, InteractionObjectsPointerHandler objectsPointerHandler,
+            GameSettings gameSettings, LineDrawer lineDrawer, CameraContainer cameraContainer)
         {
             _cameraContainer = cameraContainer;
             _lineDrawer = lineDrawer;
@@ -27,7 +28,7 @@ namespace Dev.Scripts
             _objectsPointerHandler = objectsPointerHandler;
             _movementConverter = movementConverter;
         }
-            
+
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.Mouse0))
@@ -48,37 +49,39 @@ namespace Dev.Scripts
 
         private void PointerDownHandle()
         {
-            Ray ray = _cameraContainer.Camera.ScreenPointToRay(Input.mousePosition);
-
-            bool raycast = Physics.SphereCast(ray, _hitRadius, out var hit, 99, _interactionObjLayerMask);
+            bool raycast = Raycast(out InteractionObject interactionObject);
 
             if (raycast == false)
             {
                 TryUnSelectCurrentInteractionObj();
 
-                // Debug.Log($"No object for raycast!");
                 return;
             }
-
-            var hasInteraction = hit.collider.TryGetComponent<InteractionObject>(out var interactionObject);
-
-            if (hasInteraction)
-            {
-                _downPos = Input.mousePosition;
-                //  Debug.Log($"Has interaction component");
-                OnDown(interactionObject);
-            }
-            else
-            {
-                // Debug.Log($"Does not have interaction component");
-            }
-          
+            
+            _downPos = Input.mousePosition;
+            
+            OnDown(interactionObject);
         }
 
+        private bool Raycast(out InteractionObject interactionObject)
+        {
+            interactionObject = null;
+            
+            Ray ray = _cameraContainer.Camera.ScreenPointToRay(Input.mousePosition);
+            
+            bool raycast = Physics.SphereCast(ray, _hitRadius, out var hit, 99, _interactionObjLayerMask);
+
+            if (raycast == false) return false;
+            
+            var hasInteraction = hit.collider.TryGetComponent<InteractionObject>(out interactionObject);
+            
+            return hasInteraction;
+        }
+        
         private void PointerUpHandle()
         {
             _lineDrawer.StopDrawing();
-            
+
             if (_selectedObject == null) return;
 
             OnUp(_selectedObject);
@@ -92,7 +95,7 @@ namespace Dev.Scripts
             direction = direction.GetStraightDirection();
 
             float moveUnits = interactionObject.MoveUnits;
-            
+
             Vector3 origin = interactionObject.transform.position;
             Vector3 targetPos = origin + new Vector3(direction.x, direction.y, 0) * moveUnits;
 
@@ -106,12 +109,15 @@ namespace Dev.Scripts
             {
                 offset = (interactionObject.transform.localScale.x / 2f);
             }
-            
-            Vector3 rayOrigin = origin + (Vector3) direction * offset;
-            
-            var hasPath = _movementConverter.HasPath(origin, targetPos, interactionObject.transform, direction, moveUnits);
 
-            if (hasPath)
+            Vector3 rayOrigin = origin + (Vector3)direction * offset;
+
+            var hasPath =
+                _movementConverter.HasPath(origin, targetPos, interactionObject.transform, direction, moveUnits);
+
+            var allowToSwipe = _objectsPointerHandler.AllowToSwipe(interactionObject, direction);
+
+            if (hasPath && allowToSwipe)
             {
                 _lineDrawer.DrawLine(rayOrigin, targetPos);
             }
@@ -123,6 +129,8 @@ namespace Dev.Scripts
 
         private void OnUp(InteractionObject interactionObject)
         {
+            TryUnSelectCurrentInteractionObj();
+            
             _objectsPointerHandler.Up(interactionObject);
         }
 

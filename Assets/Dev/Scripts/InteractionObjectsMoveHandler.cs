@@ -8,7 +8,7 @@ namespace Dev.Scripts
     {
         private InteractionObject _selectedObject;
         private Vector2 _mouseDownPos;
-        
+
         private MovementConverter _movementConverter = new MovementConverter();
 
         private GameSettings _gameSettings;
@@ -17,11 +17,11 @@ namespace Dev.Scripts
         {
             _gameSettings = gameSettings;
         }
-        
+
         public void Down(InteractionObject interactionObject)
         {
             _mouseDownPos = Input.mousePosition;
-            
+
             interactionObject.OnDown();
             interactionObject.SetColor(Color.yellow);
         }
@@ -29,7 +29,7 @@ namespace Dev.Scripts
         public void Up(InteractionObject interactionObject)
         {
             interactionObject.OnUp();
-            
+
             Vector2 up = Input.mousePosition;
             Vector2 swipeDirection = up - _mouseDownPos;
 
@@ -46,7 +46,8 @@ namespace Dev.Scripts
             Vector3 targetPos = interactionObject.transform.position +
                                 new Vector3(swipeDirection.x, swipeDirection.y, 0) * moveUnits;
 
-            var hasPath = _movementConverter.HasPath(origin, targetPos, interactionObject.transform, swipeDirection, moveUnits);
+            var hasPath = _movementConverter.HasPath(origin, targetPos, interactionObject.transform, swipeDirection,
+                moveUnits);
 
             _mouseDownPos = Vector2.zero;
 
@@ -56,7 +57,27 @@ namespace Dev.Scripts
                 return;
             }
 
-            Swipe(interactionObject, targetPos, swipeDirection);
+            var allowToSwipe = AllowToSwipe(interactionObject, swipeDirection);
+
+            if (allowToSwipe)
+            {
+                Swipe(interactionObject, targetPos, swipeDirection);
+            }
+        }
+
+        public bool AllowToSwipe(InteractionObject interactionObject, Vector2 swipeDirection)
+        {
+            foreach (SwipeDirection direction in interactionObject.AllowedSwipeDirection)
+            {
+                Vector2 discreteDirection = swipeDirection.GetDirectionByType(direction);
+
+                if (discreteDirection == swipeDirection)
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         private void Swipe(InteractionObject interactionObject, Vector3 targetPos, Vector2 swipeDirection)
@@ -67,5 +88,4 @@ namespace Dev.Scripts
             interactionObject.transform.DOMove(targetPos, 0.2f).OnComplete((() => interactionObject.IsMoving = false));
         }
     }
-    
 }

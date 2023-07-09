@@ -1,4 +1,5 @@
-﻿using Dev.Scripts.Infrastructure;
+using Dev.Scripts.Infrastructure;
+using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 
@@ -8,8 +9,11 @@ namespace Dev.Scripts
     {
         [SerializeField] private Renderer _renderer;
         [SerializeField] private int _moveUnits;
+        [SerializeField] private List<SwipeDirection> _allowedSwipeDirection;
 
-        public int MoveUnits => _moveUnits;
+        public List<SwipeDirection> AllowedSwipeDirection => _allowedSwipeDirection;
+
+        public int MoveUnits => _moveUnits; 
 
         private Color _originColor;
 
@@ -23,6 +27,17 @@ namespace Dev.Scripts
 
         private void Awake()
         {
+            if (_allowedSwipeDirection.Count == 0)
+            {
+                _allowedSwipeDirection = new List<SwipeDirection>()
+                {
+                    SwipeDirection.Left,
+                    SwipeDirection.Right,
+                    SwipeDirection.Up,
+                    SwipeDirection.Down
+                };
+            }
+            
             _renderer = GetComponent<Renderer>();
             _originColor = _renderer.material.color;
         }
@@ -68,4 +83,13 @@ namespace Dev.Scripts
             AudioManager.Instance.PlaySound(SoundType.Platform);
         }
     }
+
+    public enum SwipeDirection
+    {
+        Up,
+        Down,
+        Left,
+        Right
+    }
+    
 }

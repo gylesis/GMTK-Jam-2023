@@ -33,7 +33,7 @@ namespace Dev.Scripts
         {
             UnLoadCurrentLevel();
 
-            AsyncOperation loadSceneAsync = SceneManager.LoadSceneAsync("Level1");
+            AsyncOperation loadSceneAsync = SceneManager.LoadSceneAsync("LevelsScene");
 
             loadSceneAsync.completed += OnLoadSceneAsyncOncompleted;
 
@@ -48,17 +48,22 @@ namespace Dev.Scripts
                 _currentLevel.FinishZone.TriggerEntered.TakeUntilDestroy(_currentLevel)
                     .Subscribe((OnFinishZoneTriggered));
 
-                foreach (LevelSavePoint savePoint in _currentLevel.SavePoints)
-                {
-                    savePoint.TriggerBox.TriggerEntered.TakeUntilDestroy(_currentLevel).Subscribe((collider =>
-                    {
-                        OnSavePointReached(savePoint);
-                    }));
-                }
+                HandleSavePoints(_currentLevel);
                 
                 if (_currentLevel.SavePoints.Length > 0) _lastSavePoint = _currentLevel.SavePoints.First();
                 
                 _levelStateHandler.PreStartLevel(_currentLevel);
+            }
+        }
+
+        private void HandleSavePoints(Level level)
+        {
+            foreach (LevelSavePoint savePoint in level.SavePoints)
+            {
+                savePoint.TriggerBox.TriggerEntered.TakeUntilDestroy(_currentLevel).Subscribe((collider =>
+                {
+                    OnSavePointReached(savePoint);
+                }));
             }
         }
 
@@ -87,16 +92,6 @@ namespace Dev.Scripts
             {
                 _levelStateHandler.RestartLevel(_currentLevel);
             }
-        }
-
-        public void LoadMainMenu()
-        {
-            LoadInternal("MainMenu");
-        }
-
-        private void LoadInternal(string sceneName)
-        {
-            SceneManager.LoadScene(sceneName);
         }
 
         private void UnLoadCurrentLevel()
