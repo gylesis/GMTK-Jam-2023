@@ -59,11 +59,11 @@ Material:
     - _RippleSpeed: 1
     - _RippleStrenght: 1
     - _RipplesCount: 3.03
-    - _Thickness: 0.06
+    - _Thickness: 0.04
     m_Colors:
     - _BaseColor: {r: 0, g: 0, b: 0, a: 0}
     - _CenterColor: {r: 0.2313726, g: 0.682353, b: 0.8, a: 0}
     - _Color: {r: 0, g: 0, b: 0, a: 0}
-    - _OutlineColor: {r: 1.09179, g: 1.1105705, b: 1.1282842, a: 0}
+    - _OutlineColor: {r: 1.506348, g: 1.506348, b: 1.506348, a: 0}
     - _RippleCenter: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []

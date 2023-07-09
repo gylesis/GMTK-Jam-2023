@@ -52,7 +52,7 @@ Material:
     - _MaxPulseValue: 0.618
     - _Metallic: 0
     - _MinPulseValue: 0.3
-    - _OutlineSmoothness: 2
+    - _OutlineSmoothness: 0
     - _OutlineSpeed: 0.5
     - _QueueControl: 0
     - _QueueOffset: 0
