@@ -30,7 +30,7 @@ namespace Dev.Scripts.UI
 
         private void OnQuitButtonClicked()
         {
-            _levelManager.LoadMainMenu();
+            _levelManager.LoadLevel(0);
         }
         
     }

@@ -76,7 +76,10 @@ namespace Dev.Scripts
             
             foreach (InteractionObject interactionObject in level.InteractionObjects)
             {
-                interactionObject.transform.position = _objectsOriginData[interactionObject.GetInstanceID()];
+                if (interactionObject.AllowToReset)
+                {
+                    interactionObject.transform.position = _objectsOriginData[interactionObject.GetInstanceID()];
+                }
                 interactionObject.OnReset();
             }
 

@@ -32,7 +32,7 @@ namespace Dev.Scripts.Infrastructure
             }
             else
             {
-                 bool active = PlayerPrefs.GetInt("Level_" + _level) == 1;
+                 bool active = PlayerPrefs.GetInt("Level_" + _level) == 0;
                  _blockingPlatform.gameObject.SetActive(active);
             }
             

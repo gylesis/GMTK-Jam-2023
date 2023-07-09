@@ -15,6 +15,7 @@ namespace Dev.Scripts
         private LevelStateHandler _levelStateHandler;
         private LevelFactory _levelFactory;
         private Curtain _curtain;
+        private int _levelNum;
 
         public Level Level => _currentLevel;
 
@@ -34,6 +35,8 @@ namespace Dev.Scripts
         public void LoadLevel(int level)
         {
             UnLoadCurrentLevel();
+
+            _levelNum = level;
 
             AsyncOperation loadSceneAsync = SceneManager.LoadSceneAsync("LevelsScene");
 
@@ -86,7 +89,10 @@ namespace Dev.Scripts
         {
             _levelStateHandler.FinishLevel(_currentLevel);
             AudioManager.Instance.PlaySound(SoundType.Finish);
-            
+
+            PlayerPrefs.SetInt("CurrentLevel", _levelNum);
+            PlayerPrefs.SetInt("Level_" + (_levelNum + 1) , 1);
+            PlayerPrefs.Save();
             _curtain.FadeInOut();
             LoadLevel(0);
         }

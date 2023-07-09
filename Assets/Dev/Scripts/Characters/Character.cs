@@ -77,7 +77,7 @@ namespace Dev.Scripts.Characters
             {
                 if (_rigidbody.velocity.x < 0.1f && _checkForDeathCollision)
                 {
-                    //Die();
+                    Die();
                 }
                 else if (_rigidbody.velocity.x < (_rigidbody.transform.right * _speed).magnitude)
                 {

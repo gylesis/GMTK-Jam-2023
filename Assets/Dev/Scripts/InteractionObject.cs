@@ -9,6 +9,7 @@ namespace Dev.Scripts
         [SerializeField] private Renderer _renderer;
         [SerializeField] private int _moveUnits;
         [SerializeField] private List<SwipeDirection> _allowedSwipeDirection;
+        [SerializeField] private bool _allowToReset;
 
         public List<SwipeDirection> AllowedSwipeDirection => _allowedSwipeDirection;
 
@@ -17,6 +18,8 @@ namespace Dev.Scripts
         private Color _originColor;
 
         public bool IsMoving { get; set; }
+
+        public bool AllowToReset => _allowToReset;
 
         protected virtual void Awake()
         {
