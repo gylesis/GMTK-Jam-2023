@@ -49,6 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spawnPoint: {fileID: 614468805981366478}
   _triggerBox: {fileID: 8899086396144902269}
+  _flag: {fileID: 2904482887001211247}
 --- !u!1 &5654672071566414748
 GameObject:
   m_ObjectHideFlags: 0
@@ -72,15 +73,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5654672071566414748}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.26, y: -3.3002887, z: 17.78}
+  m_LocalRotation: {x: 0, y: 0, z: -1, w: 0}
+  m_LocalPosition: {x: 0, y: -2, z: 3.75}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7962618860371941663}
   m_Father: {fileID: 9209244678056273218}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -180}
 --- !u!1001 &1157880580788463004
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -244,15 +245,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 59e3f6b7c5327734b926f8787c62ea39, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 59e3f6b7c5327734b926f8787c62ea39, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 59e3f6b7c5327734b926f8787c62ea39, type: 3}
       propertyPath: m_LocalScale.z
-      value: 3
+      value: 0.45000002
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 59e3f6b7c5327734b926f8787c62ea39, type: 3}
       propertyPath: m_LocalPosition.x
@@ -294,6 +295,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 59e3f6b7c5327734b926f8787c62ea39, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 59e3f6b7c5327734b926f8787c62ea39, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: dfbe1fb2c64e5d649b3e6d7bb8d2f62b, type: 2}
+    - target: {fileID: -4002239815115787907, guid: 59e3f6b7c5327734b926f8787c62ea39, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a1e99c98cc01c884a8b769572a031839, type: 2}
     - target: {fileID: 919132149155446097, guid: 59e3f6b7c5327734b926f8787c62ea39, type: 3}
       propertyPath: m_Name
       value: flag

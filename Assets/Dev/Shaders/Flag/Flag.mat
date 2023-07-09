@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Player
+  m_Name: Flag
   m_Shader: {fileID: -6465566751694194690, guid: ba656bfb1eba6774dbaa79956bbc5af9, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords:
@@ -56,7 +56,7 @@ Material:
     - _RippleSpeed: 1
     - _RippleStrenght: 1
     - _RipplesCount: 6.47
-    - _Thickness: 0.075
+    - _Thickness: 0.079
     m_Colors:
     - _BaseColor: {r: 1, g: 0.17348778, b: 0, a: 0}
     - _CenterColor: {r: 0.2313726, g: 0.682353, b: 0.8, a: 0}
