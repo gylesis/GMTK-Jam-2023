@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Base
+  m_Name: Other Base
   m_Shader: {fileID: -6465566751694194690, guid: ba656bfb1eba6774dbaa79956bbc5af9, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords:
@@ -73,6 +73,6 @@ Material:
     - _BaseColor: {r: 1, g: 0, b: 0, a: 0}
     - _CenterColor: {r: 0.2313726, g: 0.682353, b: 0.8, a: 0}
     - _Color: {r: 0, g: 0, b: 0, a: 0}
-    - _OutlineColor: {r: 5.992157, g: 4.1411767, b: 0, a: 0}
+    - _OutlineColor: {r: 5.992157, g: 0, b: 5.4350123, a: 0}
     - _RippleCenter: {r: 1.2, g: 1.34, b: 0, a: 0}
   m_BuildTextureStacks: []
