@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Background
+  m_Name: GroundBackground
   m_Shader: {fileID: -6465566751694194690, guid: 58002e144cc5cc244b4443feb3c7418a, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -56,7 +56,6 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
-    - _Color: {r: 1.3337809, g: 0.958911, b: 1.5058454, a: 0}
-    - _MoveDirection: {r: 0, g: -1, b: 0, a: 0}
-    - _Tiling: {r: 20, g: 20, b: 0, a: 0}
+    - _MoveDirection: {r: 0, g: 8.17, b: 0, a: 0}
+    - _Tiling: {r: 0.85, g: 0.01, b: 0, a: 0}
   m_BuildTextureStacks: []
