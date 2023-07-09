@@ -56,6 +56,13 @@ namespace Dev.Scripts
             }
         }
 
+        public void LoadMainMenu()
+        {
+            UnLoadCurrentLevel();
+            
+            SceneManager.LoadSceneAsync("Lobby");
+        }
+        
         private void HandleSavePoints(Level level)
         {
             foreach (LevelSavePoint savePoint in level.SavePoints)

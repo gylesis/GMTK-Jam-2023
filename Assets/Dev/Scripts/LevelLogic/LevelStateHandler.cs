@@ -72,6 +72,8 @@ namespace Dev.Scripts
 
         public void CleanLevel(Level level)
         {
+            _cameraController.Dispose();
+            
             foreach (InteractionObject interactionObject in level.InteractionObjects)
             {
                 interactionObject.transform.position = _objectsOriginData[interactionObject.GetInstanceID()];

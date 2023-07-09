@@ -39,7 +39,7 @@ namespace Dev.Scripts
 
         private void OnGUI()
         {
-            if (GUI.Button(new Rect(100, 100, 50, 50), "Reset"))
+            if (GUI.Button(new Rect(200, 100, 100, 75), "Reset"))
             {
                 Container.Resolve<LevelManager>().ResetLevel();
             }
