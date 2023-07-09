@@ -194,6 +194,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Level 3 (spike) 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2916436231429740667, guid: 582e1c6aa526eec4c97627392e9bb21b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 582e1c6aa526eec4c97627392e9bb21b, type: 3}
 --- !u!114 &102961963 stripped
@@ -264,7 +268,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!20 &556934230
 Camera:
   m_ObjectHideFlags: 0
@@ -779,7 +783,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4539695427327412588, guid: ab4a712c653c7b44fb0e303b15739231, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4539695427327412592, guid: ab4a712c653c7b44fb0e303b15739231, type: 3}
       propertyPath: m_RootOrder

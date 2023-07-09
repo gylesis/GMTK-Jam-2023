@@ -33,7 +33,7 @@ namespace Dev.Scripts.UI
 
         private void OnPlayButtonClicked()
         {
-            _levelManager.LoadLevel(_levelUIController.ChosenLevel);
+            //_levelManager.LoadLevel(_levelUIController.ChosenLevel);
         }
     }
 }
