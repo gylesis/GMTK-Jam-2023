@@ -102,6 +102,9 @@ namespace Dev.Scripts.Characters
             _rigidbody.AddForce(Vector3.up * _jumpStrength * forceMultiplier);
             AudioManager.Instance.PlaySound(SoundType.Jump);
             AnimateFly();
+            VFXManager.Instance.PlayJump();
+            VFXManager.Instance.SetRunningActive(false);
+
             _grounded = false;
             _currentPlatform = null;
             _ableToCheck = false;
@@ -127,11 +130,14 @@ namespace Dev.Scripts.Characters
             if (!_ableToCheck) return;
             _grounded = Physics.Raycast(_checkGroundPoint.position, Vector3.down, out RaycastHit hit, 0.08f, _ignoreMask);
 
+            //Landed
             if (!_previouslyGrounded && _grounded)
             {
                 AudioManager.Instance.PlaySound(SoundType.Land);
                 StopAnimateFly();
-                Debug.Log("Landed");
+                
+                VFXManager.Instance.PlayLand();
+                VFXManager.Instance.SetRunningActive(true);
             }
             
             if (hit.transform)
@@ -149,6 +155,7 @@ namespace Dev.Scripts.Characters
             ActivateMovement(false);
             transform.DOScale(Vector3.zero, 0.5f).SetEase(Ease.InBounce);
             AudioManager.Instance.PlaySound(SoundType.Death);
+            VFXManager.Instance.PlayDeath();
 
             Observable.Timer(TimeSpan.FromMilliseconds(1000)).TakeUntilDestroy(this).Subscribe(l =>
             {
