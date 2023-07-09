@@ -54,13 +54,17 @@ Material:
     - _Cull: 0
     - _DstBlend: 10
     - _Gradient: 0
+    - _Metallic: 0
     - _OutlineSmoothness: 2.6
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
+    - _RippleSpeed: 1
+    - _RippleStrenght: 1
+    - _RipplesCount: 6.47
     - _SrcBlend: 5
     - _Surface: 1
-    - _Thickness: 0.95
+    - _Thickness: 0.1
     - _WorkflowMode: 1
     - _ZTest: 4
     - _ZWrite: 0
@@ -68,5 +72,7 @@ Material:
     m_Colors:
     - _BaseColor: {r: 1, g: 0, b: 0, a: 0}
     - _CenterColor: {r: 0.2313726, g: 0.682353, b: 0.8, a: 0}
-    - _OutlineColor: {r: 0.7490196, g: 0.5176471, b: 0, a: 0}
+    - _Color: {r: 0, g: 0, b: 0, a: 0}
+    - _OutlineColor: {r: 5.992157, g: 4.1411767, b: 0, a: 0}
+    - _RippleCenter: {r: 1.2, g: 1.34, b: 0, a: 0}
   m_BuildTextureStacks: []

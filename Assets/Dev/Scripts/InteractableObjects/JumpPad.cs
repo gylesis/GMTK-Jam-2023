@@ -8,6 +8,8 @@ namespace Dev.Scripts.InteractableObjects
     public class JumpPad : InteractionObject
     {
         [SerializeField] private bool _active;
+        [SerializeField] private float _jumpMultiplier;
+        
 
         [SerializeField] private Transform _lid1;
         [SerializeField] private Transform _lid2;
@@ -73,7 +75,7 @@ namespace Dev.Scripts.InteractableObjects
             
             if (other.TryGetComponent(out Character character))
             {
-                character.Jump(1.5f, true);
+                character.Jump(_jumpMultiplier, true);
                 AudioManager.Instance.PlaySound(SoundType.JumpPad);
                 _pad.DOLocalMoveZ(1, 0.25f).SetEase(Ease.OutBounce).SetLoops(2, LoopType.Yoyo);
             }
