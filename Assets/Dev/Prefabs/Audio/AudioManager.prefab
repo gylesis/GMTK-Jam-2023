@@ -60,7 +60,7 @@ MonoBehaviour:
   - _type: 5
     _audioClip: {fileID: 8300000, guid: 548448f1476560d4eb3871ab6c13f610, type: 3}
   - _type: 6
-    _audioClip: {fileID: 8300000, guid: b5a286dbd2feda04baf6f817b76e8d4a, type: 3}
+    _audioClip: {fileID: 8300000, guid: bc80cf3ddd5e96849a8479ce399ecbdd, type: 3}
   - _type: 7
     _audioClip: {fileID: 8300000, guid: dd7e38875a2634642b2f77aeb0469afd, type: 3}
   - _type: 8

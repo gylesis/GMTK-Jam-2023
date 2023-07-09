@@ -1896,6 +1896,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1390052737}
     m_Modifications:
+    - target: {fileID: 761852390978907098, guid: 69b3b377d92e23e42b876549927ab3af, type: 3}
+      propertyPath: m_Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 761852390978907098, guid: 69b3b377d92e23e42b876549927ab3af, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 761852390978907098, guid: 69b3b377d92e23e42b876549927ab3af, type: 3}
+      propertyPath: m_Color.b
+      value: 0.6509434
+      objectReference: {fileID: 0}
+    - target: {fileID: 761852390978907098, guid: 69b3b377d92e23e42b876549927ab3af, type: 3}
+      propertyPath: m_Color.g
+      value: 0.53678757
+      objectReference: {fileID: 0}
+    - target: {fileID: 761852390978907098, guid: 69b3b377d92e23e42b876549927ab3af, type: 3}
+      propertyPath: m_Color.r
+      value: 0.14431292
+      objectReference: {fileID: 0}
+    - target: {fileID: 2727247993683323142, guid: 69b3b377d92e23e42b876549927ab3af, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 115.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2727247993683323142, guid: 69b3b377d92e23e42b876549927ab3af, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -103.1
+      objectReference: {fileID: 0}
     - target: {fileID: 6615579644375726185, guid: 69b3b377d92e23e42b876549927ab3af, type: 3}
       propertyPath: m_Name
       value: GameplayMenu
@@ -1998,6 +2026,38 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1390052737}
     m_Modifications:
+    - target: {fileID: 172515015761971920, guid: dad1be3af08ddcb468151dece865c80a, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 172515015761971920, guid: dad1be3af08ddcb468151dece865c80a, type: 3}
+      propertyPath: m_Color.b
+      value: 0.6509804
+      objectReference: {fileID: 0}
+    - target: {fileID: 172515015761971920, guid: dad1be3af08ddcb468151dece865c80a, type: 3}
+      propertyPath: m_Color.g
+      value: 0.5372549
+      objectReference: {fileID: 0}
+    - target: {fileID: 172515015761971920, guid: dad1be3af08ddcb468151dece865c80a, type: 3}
+      propertyPath: m_Color.r
+      value: 0.14509805
+      objectReference: {fileID: 0}
+    - target: {fileID: 1038256884376743008, guid: dad1be3af08ddcb468151dece865c80a, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 1038256884376743008, guid: dad1be3af08ddcb468151dece865c80a, type: 3}
+      propertyPath: m_Color.b
+      value: 0.6509804
+      objectReference: {fileID: 0}
+    - target: {fileID: 1038256884376743008, guid: dad1be3af08ddcb468151dece865c80a, type: 3}
+      propertyPath: m_Color.g
+      value: 0.5372549
+      objectReference: {fileID: 0}
+    - target: {fileID: 1038256884376743008, guid: dad1be3af08ddcb468151dece865c80a, type: 3}
+      propertyPath: m_Color.r
+      value: 0.14509805
+      objectReference: {fileID: 0}
     - target: {fileID: 5996828133044279651, guid: dad1be3af08ddcb468151dece865c80a, type: 3}
       propertyPath: m_Name
       value: GamePauseMenu

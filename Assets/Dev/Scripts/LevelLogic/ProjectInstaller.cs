@@ -1,5 +1,4 @@
-﻿using System;
-using Dev.Scripts.Characters;
+﻿using Dev.Scripts.Characters;
 using Dev.Scripts.Infrastructure;
 using Dev.Scripts.UI;
 using UnityEngine;
@@ -39,14 +38,6 @@ namespace Dev.Scripts
             Container.Bind<GameSettings>().FromInstance(_gameSettings).AsSingle();
             Container.Bind<LevelsContainer>().FromInstance(_levelsContainer).AsSingle();
             Container.Bind<CameraContainer>().FromInstance(_cameraContainer).AsSingle();
-        }
-
-        private void OnGUI()
-        {
-            if (GUI.Button(new Rect(200, 100, 100, 75), "Reset"))
-            {
-                Container.Resolve<LevelManager>().ResetLevel();
-            }
         }
     }
 }
