@@ -61,6 +61,10 @@ MonoBehaviour:
     _audioClip: {fileID: 8300000, guid: 548448f1476560d4eb3871ab6c13f610, type: 3}
   - _type: 6
     _audioClip: {fileID: 8300000, guid: b5a286dbd2feda04baf6f817b76e8d4a, type: 3}
+  - _type: 7
+    _audioClip: {fileID: 8300000, guid: dd7e38875a2634642b2f77aeb0469afd, type: 3}
+  - _type: 8
+    _audioClip: {fileID: 8300000, guid: 2d1581d597bd6b6479040e87ea21372d, type: 3}
   _sorcesContainer: {fileID: 4468530204505584958}
   _sourcePrefab: {fileID: 4256144138392087265, guid: a3744239f1002534f9da587fe6037e31, type: 3}
 --- !u!1 &3547858753184013236
@@ -138,7 +142,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: f50b4dab409ffa546aba27b8c12f1ba9, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.25
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0

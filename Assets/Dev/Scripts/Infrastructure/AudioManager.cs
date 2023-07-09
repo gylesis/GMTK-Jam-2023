@@ -65,6 +65,7 @@ namespace Dev.Scripts.Infrastructure
         Jump,
         JumpPad,
         Platform,
-        Land
+        Land,
+        Finish
     }
 }

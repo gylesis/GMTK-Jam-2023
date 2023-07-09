@@ -76,6 +76,7 @@ namespace Dev.Scripts
         private void OnFinishZoneTriggered(Collider other)
         {
             _levelStateHandler.FinishLevel(_currentLevel);
+            AudioManager.Instance.PlaySound(SoundType.Finish);
 
             ResetLevel();
         }

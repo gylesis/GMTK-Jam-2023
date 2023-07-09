@@ -13,10 +13,12 @@ namespace Dev.Scripts.InteractableObjects
         [SerializeField] private Transform _lid2;
         [SerializeField] private Transform _pad;
 
-        private Tween _openSequence; 
+        private Tween _openSequence;
+        private bool _initialState;
         
         private void Awake()
         {
+            _initialState = _active;
             _openSequence = DOTween.Sequence()
                 .Append(_lid1.DOLocalRotate(90 * Vector3.up, 0.5f))
                 .Join(_lid2.DOLocalRotate(90 * Vector3.up, 0.5f))
@@ -38,6 +40,7 @@ namespace Dev.Scripts.InteractableObjects
             _active = !_active;
 
             AnimateOpen();
+            PlaySound();
         }
 
         private void AnimateOpen()
@@ -45,13 +48,23 @@ namespace Dev.Scripts.InteractableObjects
             if (_active)
             {
                 _openSequence.PlayForward();
-                AudioManager.Instance.PlaySound(SoundType.Activate);
             }
             else
             {
                 _openSequence.PlayBackwards();
-                AudioManager.Instance.PlaySound(SoundType.Deactivate);
             }
+        }
+
+        private void PlaySound()
+        {
+            AudioManager.Instance.PlaySound(_active ? SoundType.Activate : SoundType.Deactivate);
+        }
+
+        public override void OnReset()
+        {
+            _active = _initialState;
+            
+            AnimateOpen();
         }
 
         private void OnTriggerEnter(Collider other)

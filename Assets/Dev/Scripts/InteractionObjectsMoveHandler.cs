@@ -86,6 +86,7 @@ namespace Dev.Scripts
 
             interactionObject.IsMoving = true;
             interactionObject.transform.DOMove(targetPos, 0.2f).OnComplete((() => interactionObject.IsMoving = false));
+            AudioManager.Instance.PlaySound(SoundType.Platform);
         }
     }
 }

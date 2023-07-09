@@ -15,18 +15,20 @@ namespace Dev.Scripts.Characters
         [SerializeField] private float _gravityForceStrength;
         [SerializeField] private LayerMask _ignoreMask;
         [SerializeField] private Transform _checkGroundPoint;
-        
+
+        [SerializeField] private Transform _visuals;
         [SerializeField] private Rigidbody _rigidbody;
         [SerializeField] private bool _allowToMove = true;
         
 
         private bool _grounded;
-        private bool _previouslyGrounded;
+        private bool _previouslyGrounded = true;
 
         private bool _ableToCheck = true;
         private bool _checkForDeathCollision = false;
         private InterfaceTrackedPlatform _currentPlatform;
         private LevelManager _levelManager;
+        private Tween _flyAnimation;
 
         public LayerMask IgnoreMask => _ignoreMask;
         public bool Grounded => _grounded;
@@ -49,9 +51,13 @@ namespace Dev.Scripts.Characters
             CheckGround();
             SetSpeed();
         }
+        
 
         private void Initialize()
         {
+            _flyAnimation = _visuals.DOLocalRotate(-90 * Vector3.forward, 0.2f).SetEase(Ease.Linear).SetLoops(-1, LoopType.Incremental)
+                .SetAutoKill(false).Pause();
+
             SetSpeed();
             Observable.Timer(TimeSpan.FromMilliseconds(1000)).TakeUntilDestroy(this).Subscribe(l =>
             {
@@ -95,6 +101,7 @@ namespace Dev.Scripts.Characters
             
             _rigidbody.AddForce(Vector3.up * _jumpStrength * forceMultiplier);
             AudioManager.Instance.PlaySound(SoundType.Jump);
+            AnimateFly();
             _grounded = false;
             _currentPlatform = null;
             _ableToCheck = false;
@@ -104,15 +111,28 @@ namespace Dev.Scripts.Characters
             });
         }
 
+        private void AnimateFly()
+        {
+            _flyAnimation.Play();
+        }
+
+        private void StopAnimateFly()
+        {
+            _flyAnimation.Goto(0);
+            _flyAnimation.Pause();
+        }
+        
         private void CheckGround()
         {
             if (!_ableToCheck) return;
-            _grounded = Physics.Raycast(_checkGroundPoint.position, Vector3.down, out RaycastHit hit, 0.1f, _ignoreMask);
+            _grounded = Physics.Raycast(_checkGroundPoint.position, Vector3.down, out RaycastHit hit, 0.08f, _ignoreMask);
 
             if (!_previouslyGrounded && _grounded)
             {
                 AudioManager.Instance.PlaySound(SoundType.Land);
-            }            
+                StopAnimateFly();
+                Debug.Log("Landed");
+            }
             
             if (hit.transform)
             {
