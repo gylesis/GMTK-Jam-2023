@@ -311,6 +311,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Curtain
       objectReference: {fileID: 0}
+    - target: {fileID: 6246106485370172047, guid: 10ca5bf0650fc5f4c8a0ec82ea3dcb2e, type: 3}
+      propertyPath: m_Alpha
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6246106485370172047, guid: 10ca5bf0650fc5f4c8a0ec82ea3dcb2e, type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6246106485370172047, guid: 10ca5bf0650fc5f4c8a0ec82ea3dcb2e, type: 3}
+      propertyPath: m_BlocksRaycasts
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6246106485370172148, guid: 10ca5bf0650fc5f4c8a0ec82ea3dcb2e, type: 3}
       propertyPath: m_Pivot.x
       value: 0

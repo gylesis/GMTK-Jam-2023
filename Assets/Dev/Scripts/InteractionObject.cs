@@ -1,4 +1,3 @@
-using Dev.Scripts.Infrastructure;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
@@ -19,13 +18,7 @@ namespace Dev.Scripts
 
         public bool IsMoving { get; set; }
 
-        public virtual void OnSwipe(Vector3 direction) { }
-
-        public virtual void OnUp() { }
-
-        public virtual void OnDown() { }
-
-        private void Awake()
+        protected virtual void Awake()
         {
             if (_allowedSwipeDirection.Count == 0)
             {
@@ -45,6 +38,12 @@ namespace Dev.Scripts
                 _originColor = _renderer.material.color;
             }
         }
+
+        public virtual void OnSwipe(Vector3 direction) { }
+
+        public virtual void OnUp() { }
+
+        public virtual void OnDown() { }
 
         public void SetColor(Color color)
         {

@@ -9,6 +9,8 @@ namespace Dev.Scripts
         [SerializeField] private SpawnPoint _spawnPoint;
         [SerializeField] private PlayerTriggerBox _triggerBox;
 
+        [SerializeField] private Transform _zoneEffect; 
+        
         [SerializeField] private Transform _flag;
         
         public PlayerTriggerBox TriggerBox => _triggerBox;
@@ -19,6 +21,7 @@ namespace Dev.Scripts
             {
                 _flag.transform.DOLocalRotate(-90*Vector3.forward, 0.5f).SetEase(Ease.InOutBounce);
                 _triggerBox.gameObject.SetActive(false);
+                _zoneEffect.gameObject.SetActive(false);
             }));
         }
 
