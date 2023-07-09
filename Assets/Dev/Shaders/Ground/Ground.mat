@@ -49,12 +49,18 @@ Material:
     m_Ints: []
     m_Floats:
     - _Gradient: -0.34
+    - _Metallic: 0
     - _OutlineSmoothness: 2
     - _QueueControl: 0
     - _QueueOffset: 0
+    - _RippleSpeed: 1
+    - _RippleStrenght: 1
+    - _RipplesCount: 6.47
     - _Thickness: 0.9
     m_Colors:
     - _BaseColor: {r: 0, g: 0, b: 0, a: 0}
     - _CenterColor: {r: 0.2313726, g: 0.682353, b: 0.8, a: 0}
-    - _OutlineColor: {r: 0.4642936, g: 2.512648, b: 4.479068, a: 0}
+    - _Color: {r: 0, g: 0, b: 0, a: 0}
+    - _OutlineColor: {r: 0, g: 0, b: 0, a: 0}
+    - _RippleCenter: {r: 1.2, g: 1.34, b: 0, a: 0}
   m_BuildTextureStacks: []
