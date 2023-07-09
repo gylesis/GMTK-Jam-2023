@@ -317,8 +317,12 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2214279280209645812, guid: 0308cd69d8eead04d85307665a1869eb, type: 3}
+      propertyPath: m_Pitch
+      value: 0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2214279280209645812, guid: 0308cd69d8eead04d85307665a1869eb, type: 3}
       propertyPath: m_Volume
-      value: 0.087
+      value: 0.057
       objectReference: {fileID: 0}
     - target: {fileID: 2214279280209645812, guid: 0308cd69d8eead04d85307665a1869eb, type: 3}
       propertyPath: m_audioClip
@@ -418,18 +422,6 @@ PrefabInstance:
     - target: {fileID: 6246106485370172046, guid: 10ca5bf0650fc5f4c8a0ec82ea3dcb2e, type: 3}
       propertyPath: m_Name
       value: Curtain
-      objectReference: {fileID: 0}
-    - target: {fileID: 6246106485370172047, guid: 10ca5bf0650fc5f4c8a0ec82ea3dcb2e, type: 3}
-      propertyPath: m_Alpha
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6246106485370172047, guid: 10ca5bf0650fc5f4c8a0ec82ea3dcb2e, type: 3}
-      propertyPath: m_Interactable
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6246106485370172047, guid: 10ca5bf0650fc5f4c8a0ec82ea3dcb2e, type: 3}
-      propertyPath: m_BlocksRaycasts
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6246106485370172148, guid: 10ca5bf0650fc5f4c8a0ec82ea3dcb2e, type: 3}
       propertyPath: m_Pivot.x
