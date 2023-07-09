@@ -1,6 +1,7 @@
 ﻿using System;
 using Dev.Scripts.Characters;
 using Dev.Scripts.Infrastructure;
+using Dev.Scripts.UI;
 using UnityEngine;
 using Zenject;
 
@@ -13,9 +14,12 @@ namespace Dev.Scripts
         [SerializeField] private LevelsContainer _levelsContainer;
         [SerializeField] private CameraContainer _cameraContainer;
         [SerializeField] private LineDrawer _lineDrawer;
+        [SerializeField] private Curtain _curtain;
         
         public override void InstallBindings()
         {
+            Container.Bind<Curtain>().FromInstance(_curtain).AsSingle();
+            
             Container.BindFactory<Level, Level, LevelFactory>().FromFactory<ILevelFactory>();
             Container.BindFactory<PlayerSpawnContext,Character, PlayerFactory>().FromFactory<IPlayerFactory>();
             
