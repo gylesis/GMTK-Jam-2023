@@ -49,7 +49,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _renderer: {fileID: 3349453150060632506}
   _moveUnits: 0
+  _allowedSwipeDirection: 
   _active: 0
+  _jumpMultiplier: 1.5
   _lid1: {fileID: 3914726689411906}
   _lid2: {fileID: 7708105009754384703}
   _pad: {fileID: 1179521275291716871}
