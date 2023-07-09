@@ -83,6 +83,7 @@ namespace Dev.Scripts.Characters
                 {
                     _rigidbody.velocity = _rigidbody.transform.right * _speed;
                 }
+                if(transform.position.y < -10) Die();
             }
         }
         
