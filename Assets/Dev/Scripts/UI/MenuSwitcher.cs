@@ -47,5 +47,11 @@ namespace Dev.Scripts.UI
 
             return popUp;
         }
+
+        private void OnDestroy()
+        {
+            Destroy(Instance);
+            Destroy(gameObject);
+        }
     }
 }

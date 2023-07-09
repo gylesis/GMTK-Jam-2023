@@ -39,12 +39,19 @@ namespace Dev.Scripts
             }
             
             _renderer = GetComponent<Renderer>();
-            _originColor = _renderer.material.color;
+
+            if (_renderer != null)
+            {
+                _originColor = _renderer.material.color;
+            }
         }
 
         public void SetColor(Color color)
         {
-            _renderer.material.color = color;
+            if (_renderer != null)
+            {
+                _renderer.material.color = color;
+            }
         }
 
         public void SetOriginColor()

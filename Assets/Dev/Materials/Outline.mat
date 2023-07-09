@@ -49,12 +49,20 @@ Material:
     m_Ints: []
     m_Floats:
     - _Gradient: -0.34
+    - _MaxPulseValue: 0.618
+    - _Metallic: 0
+    - _MinPulseValue: 0.3
     - _OutlineSmoothness: 2
+    - _OutlineSpeed: 0.5
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Thickness: 0.9
+    - _RippleSpeed: 1
+    - _RippleStrenght: 1
+    - _RipplesCount: 3.03
+    - _Thickness: 0.01
     m_Colors:
     - _BaseColor: {r: 0, g: 0, b: 0, a: 0}
     - _CenterColor: {r: 0.2313726, g: 0.682353, b: 0.8, a: 0}
     - _OutlineColor: {r: 0.4642936, g: 2.512648, b: 4.479068, a: 0}
+    - _RippleCenter: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
