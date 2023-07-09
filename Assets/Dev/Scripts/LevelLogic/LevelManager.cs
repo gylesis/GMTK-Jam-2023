@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using Dev.Scripts.Infrastructure;
 using UniRx;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -64,6 +65,7 @@ namespace Dev.Scripts
         private void OnSavePointReached(LevelSavePoint savePoint)
         {
             _lastSavePoint = savePoint;
+            AudioManager.Instance.PlaySound(SoundType.Checkpoint);
         }
 
         private void OnFinishZoneTriggered(Collider other)

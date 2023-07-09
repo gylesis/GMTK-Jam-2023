@@ -1,5 +1,6 @@
 ﻿using System;
 using Dev.Scripts.Characters;
+using Dev.Scripts.Infrastructure;
 using DG.Tweening;
 using UnityEngine;
 
@@ -51,10 +52,12 @@ namespace Dev.Scripts
             if (_active)
             {
                 _openSequence.PlayForward();
+                AudioManager.Instance.PlaySound(SoundType.Activate);
             }
             else
             {
                 _openSequence.PlayBackwards();
+                AudioManager.Instance.PlaySound(SoundType.Deactivate);
             }
         }
 

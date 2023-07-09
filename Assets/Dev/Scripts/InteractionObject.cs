@@ -1,4 +1,5 @@
-﻿using DG.Tweening;
+﻿using Dev.Scripts.Infrastructure;
+using DG.Tweening;
 using UnityEngine;
 
 namespace Dev.Scripts
@@ -64,6 +65,7 @@ namespace Dev.Scripts
             Vector3 targetPos = interactionObject.transform.position + _swipeDirection * _units;
 
             interactionObject.transform.DOMove(targetPos, 0.5f).SetEase(Ease.Linear);
+            AudioManager.Instance.PlaySound(SoundType.Platform);
         }
     }
 }

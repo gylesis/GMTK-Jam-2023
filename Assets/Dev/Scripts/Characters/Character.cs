@@ -1,4 +1,5 @@
 ﻿using System;
+using Dev.Scripts.Infrastructure;
 using Dev.Scripts.UI;
 using DG.Tweening;
 using UniRx;
@@ -20,6 +21,8 @@ namespace Dev.Scripts.Characters
         
 
         private bool _grounded;
+        private bool _previouslyGrounded;
+
         private bool _ableToCheck = true;
         private bool _checkForDeathCollision = false;
         private InterfaceTrackedPlatform _currentPlatform;
@@ -91,6 +94,7 @@ namespace Dev.Scripts.Characters
             _rigidbody.velocity = velocity;
             
             _rigidbody.AddForce(Vector3.up * _jumpStrength * forceMultiplier);
+            AudioManager.Instance.PlaySound(SoundType.Jump);
             _grounded = false;
             _currentPlatform = null;
             _ableToCheck = false;
@@ -104,6 +108,11 @@ namespace Dev.Scripts.Characters
         {
             if (!_ableToCheck) return;
             _grounded = Physics.Raycast(_checkGroundPoint.position, Vector3.down, out RaycastHit hit, 0.1f, _ignoreMask);
+
+            if (!_previouslyGrounded && _grounded)
+            {
+                AudioManager.Instance.PlaySound(SoundType.Land);
+            }            
             
             if (hit.transform)
             {
@@ -111,13 +120,16 @@ namespace Dev.Scripts.Characters
                 _currentPlatform = hit.transform.TryGetComponent(out Platform platform) ? platform : (hit.transform.TryGetComponent(out StaticPlatform staticPlatform) ? staticPlatform : null);
                 OnLanded.Invoke();
             }
+
+            _previouslyGrounded = _grounded;
         }
 
         public void Die()
         {
             ActivateMovement(false);
             transform.DOScale(Vector3.zero, 0.5f).SetEase(Ease.InBounce);
-            
+            AudioManager.Instance.PlaySound(SoundType.Death);
+
             Observable.Timer(TimeSpan.FromMilliseconds(1000)).TakeUntilDestroy(this).Subscribe(l =>
             {
                 _levelManager.ResetLevel();

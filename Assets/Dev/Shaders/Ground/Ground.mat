@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Pad
+  m_Name: Ground
   m_Shader: {fileID: -6465566751694194690, guid: ba656bfb1eba6774dbaa79956bbc5af9, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords:
@@ -28,7 +28,7 @@ Material:
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 3000
+  m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
@@ -48,25 +48,13 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _AlphaClip: 1
-    - _Blend: 0
-    - _CastShadows: 1
-    - _Cull: 0
-    - _DstBlend: 10
-    - _Gradient: 0
-    - _OutlineSmoothness: 2.6
+    - _Gradient: -0.34
+    - _OutlineSmoothness: 2
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _ReceiveShadows: 1
-    - _SrcBlend: 5
-    - _Surface: 1
     - _Thickness: 0.9
-    - _WorkflowMode: 1
-    - _ZTest: 4
-    - _ZWrite: 0
-    - _ZWriteControl: 0
     m_Colors:
-    - _BaseColor: {r: 1, g: 0.35361594, b: 0, a: 0}
+    - _BaseColor: {r: 0, g: 0, b: 0, a: 0}
     - _CenterColor: {r: 0.2313726, g: 0.682353, b: 0.8, a: 0}
-    - _OutlineColor: {r: 0, g: 0.7490196, b: 0.09803922, a: 0}
+    - _OutlineColor: {r: 0.4642936, g: 2.512648, b: 4.479068, a: 0}
   m_BuildTextureStacks: []

@@ -1,4 +1,5 @@
 ﻿using Dev.Scripts.Characters;
+using Dev.Scripts.Infrastructure;
 using DG.Tweening;
 using UnityEngine;
 
@@ -18,7 +19,7 @@ namespace Dev.Scripts.InteractableObjects
         {
             _openSequence = DOTween.Sequence()
                 .Append(_lid1.DOLocalRotate(90 * Vector3.up, 0.5f))
-                .Join(_lid2.DOLocalRotate(-90 * Vector3.up, 0.5f))
+                .Join(_lid2.DOLocalRotate(90 * Vector3.up, 0.5f))
                 .Append(_pad.DOLocalMoveZ(-0.5f, 0.25f));
 
             _openSequence.SetAutoKill(false);
@@ -44,10 +45,12 @@ namespace Dev.Scripts.InteractableObjects
             if (_active)
             {
                 _openSequence.PlayForward();
+                AudioManager.Instance.PlaySound(SoundType.Activate);
             }
             else
             {
                 _openSequence.PlayBackwards();
+                AudioManager.Instance.PlaySound(SoundType.Deactivate);
             }
         }
 
@@ -58,6 +61,7 @@ namespace Dev.Scripts.InteractableObjects
             if (other.TryGetComponent(out Character character))
             {
                 character.Jump(1.5f, true);
+                AudioManager.Instance.PlaySound(SoundType.JumpPad);
                 _pad.DOLocalMoveZ(1, 0.25f).SetEase(Ease.OutBounce).SetLoops(2, LoopType.Yoyo);
             }
         }
