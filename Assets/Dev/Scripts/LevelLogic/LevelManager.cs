@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using Dev.Scripts.Infrastructure;
+using Dev.Scripts.UI;
 using UniRx;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -13,18 +14,19 @@ namespace Dev.Scripts
         private Level _currentLevel;
         private LevelStateHandler _levelStateHandler;
         private LevelFactory _levelFactory;
+        private Curtain _curtain;
 
         public Level Level => _currentLevel;
 
         private LevelSavePoint _lastSavePoint;
         
         [Inject]
-        private void Init(LevelsContainer levelsContainer, LevelStateHandler levelStateHandler,
-            LevelFactory levelFactory)
+        private void Init(LevelsContainer levelsContainer, LevelStateHandler levelStateHandler, LevelFactory levelFactory, Curtain curtain)
         {
             _levelFactory = levelFactory;
             _levelStateHandler = levelStateHandler;
             _levelsContainer = levelsContainer;
+            _curtain = curtain;
         }
 
         public void Initialize() { }
@@ -84,8 +86,9 @@ namespace Dev.Scripts
         {
             _levelStateHandler.FinishLevel(_currentLevel);
             AudioManager.Instance.PlaySound(SoundType.Finish);
-
-            ResetLevel();
+            
+            _curtain.FadeInOut();
+            LoadLevel(0);
         }
 
         public void ResetLevel()

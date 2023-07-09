@@ -10,7 +10,7 @@ namespace Dev.Scripts
 
         public LevelStaticData GetLevelDataByLevel(int level)
         {
-           return _levelStaticDatas[level - 1];
+           return _levelStaticDatas[level];
         }
         
         private void OnValidate()

@@ -15,6 +15,7 @@ namespace Dev.Scripts.UI
         protected override void Awake()
         {
             base.Awake();
+            return;
             _playButton.Clicked.TakeUntilDestroy(this).Subscribe((unit => OnPlayButtonClicked()));
         }
 
@@ -26,6 +27,7 @@ namespace Dev.Scripts.UI
 
         private void Start()
         {
+            _levelManager.LoadLevel(0);
             _levelUIController.SpawnUI();
         }
 
